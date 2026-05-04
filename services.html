@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Services | OnFoot</title>
+    <link rel="shortcut icon" href="assets/img/favicon.svg">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="assets/css/meanmenu.css">
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --red: #E8132A;
+            --red-dark: #c0101f;
+            --dark: #111111;
+            --light-bg: #fff5f5;
+            --text: #222222;
+            --muted: #666666;
+            --border: #e8e8e8;
+        }
+        /* Page Hero */
+        .page-hero { background: var(--dark); padding: 160px 0 80px; position: relative; overflow: hidden; margin-top: 0; }
+        .page-hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(232,19,42,0.15) 0%, transparent 60%); }
+        .page-hero .container { position: relative; z-index: 1; }
+        .page-hero h1 { font-size: 52px; font-weight: 800; color: #fff; margin-bottom: 16px; line-height: 1.15; }
+        .page-hero p { font-size: 18px; color: #aaa; max-width: 560px; line-height: 1.7; margin-bottom: 24px; }
+        .page-hero .breadcrumb { background: none; padding: 0; margin-bottom: 20px; }
+        .page-hero .breadcrumb-item a { color: var(--red); text-decoration: none; }
+        .page-hero .breadcrumb-item.active { color: #aaa; }
+        .page-hero .breadcrumb-item+.breadcrumb-item::before { color: #555; }
+        .red-line { width: 60px; height: 4px; background: var(--red); border-radius: 2px; margin-bottom: 20px; }
+
+        /* Section styles */
+        .sec-pad { padding: 80px 0; }
+        .sec-pad-sm { padding: 60px 0; }
+        .bg-dark-sec { background: var(--dark); }
+        .bg-light-sec { background: var(--light-bg); }
+        .sec-badge { display: inline-block; font-size: 12px; font-weight: 700; color: var(--red); text-transform: uppercase; letter-spacing: 0.1em; background: rgba(232,19,42,0.08); padding: 6px 14px; border-radius: 20px; margin-bottom: 14px; }
+        .sec-title { font-size: 36px; font-weight: 800; color: var(--dark); line-height: 1.2; margin-bottom: 16px; }
+        .sec-title.light { color: #fff; }
+        .sec-desc { font-size: 16px; color: var(--muted); line-height: 1.75; }
+        .sec-desc.light { color: #aaa; }
+
+        /* Service Cards */
+        .service-card { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 32px 28px; transition: all 0.3s; height: 100%; }
+        .service-card:hover { border-color: var(--red); box-shadow: 0 8px 30px rgba(232,19,42,0.1); transform: translateY(-4px); }
+        .service-card .icon { width: 60px; height: 60px; background: var(--light-bg); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; color: var(--red); margin-bottom: 20px; }
+        .service-card h4 { font-size: 20px; font-weight: 700; color: var(--dark); margin-bottom: 12px; }
+        .service-card p { font-size: 14px; color: var(--muted); line-height: 1.7; margin: 0; }
+
+        /* Stats */
+        .stat-card { text-align: center; padding: 40px 20px; }
+        .stat-card .num { font-size: 52px; font-weight: 800; color: var(--red); line-height: 1; }
+        .stat-card .label { font-size: 15px; color: #aaa; margin-top: 8px; }
+
+        /* Process steps */
+        .step-card { display: flex; gap: 20px; align-items: flex-start; margin-bottom: 32px; }
+        .step-num { width: 48px; height: 48px; background: var(--red); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 800; flex-shrink: 0; }
+        .step-content h5 { font-size: 18px; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
+        .step-content p { font-size: 14px; color: var(--muted); margin: 0; line-height: 1.65; }
+
+        /* Portfolio grid */
+        .port-card { position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 4/3; cursor: pointer; }
+        .port-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+        .port-card:hover img { transform: scale(1.07); }
+        .port-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(17,17,17,0.88), rgba(232,19,42,0.2)); opacity: 0; transition: opacity 0.3s; display: flex; flex-direction: column; justify-content: flex-end; padding: 20px; }
+        .port-card:hover .port-overlay { opacity: 1; }
+        .port-overlay h5 { color: #fff; font-size: 17px; font-weight: 700; margin: 0 0 4px; }
+        .port-overlay span { color: var(--red); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; }
+
+        /* CTA banner */
+        .cta-banner { background: var(--red); padding: 70px 0; text-align: center; }
+        .cta-banner h2 { font-size: 36px; font-weight: 800; color: #fff; margin-bottom: 12px; }
+        .cta-banner p { color: rgba(255,255,255,0.85); font-size: 16px; margin-bottom: 28px; }
+        .btn-white { background: #fff; color: var(--red); border: none; padding: 14px 32px; border-radius: 8px; font-size: 15px; font-weight: 700; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s; }
+        .btn-white:hover { background: var(--dark); color: #fff; }
+        .btn-outline-white { background: transparent; color: #fff; border: 2px solid #fff; padding: 12px 30px; border-radius: 8px; font-size: 15px; font-weight: 700; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s; margin-left: 12px; }
+        .btn-outline-white:hover { background: #fff; color: var(--red); }
+
+        /* Team card */
+        .team-card { border-radius: 12px; overflow: hidden; background: #fff; border: 1px solid var(--border); transition: all 0.3s; }
+        .team-card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.1); transform: translateY(-4px); }
+        .team-img { width: 100%; aspect-ratio: 1; background: var(--light-bg); display: flex; align-items: center; justify-content: center; font-size: 60px; color: var(--red); }
+        .team-info { padding: 20px; text-align: center; }
+        .team-info h5 { font-size: 17px; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
+        .team-info span { font-size: 13px; color: var(--muted); }
+
+        /* Feature list */
+        .feature-list { list-style: none; padding: 0; margin: 0; }
+        .feature-list li { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px; font-size: 15px; color: var(--text); }
+        .feature-list li i { color: var(--red); font-size: 16px; margin-top: 2px; flex-shrink: 0; }
+    </style>
+</head>
+<body>
+<div class="mouse-cursor cursor-outer"></div>
+<div class="mouse-cursor cursor-inner"></div>
+<div class="scroll-up">
+    <svg class="scroll-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+    </svg>
+</div>
+
+<!-- Offcanvas -->
+<div class="fix-area">
+    <div class="offcanvas__info">
+        <div class="offcanvas__wrapper">
+            <div class="offcanvas__content">
+                <div class="offcanvas__top mb-5 d-flex justify-content-between align-items-center">
+                    <div class="offcanvas__logo"><a href="index.html"><img src="assets/img/logo/logo-onfoot.jpg" alt="logo"></a></div>
+                    <div class="offcanvas__close"><button><i class="fas fa-times"></i></button></div>
+                </div>
+                <div class="mobile-menu fix mb-3"></div>
+                <div class="offcanvas__contact">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li class="d-flex align-items-center">
+                            <div class="offcanvas__contact-icon"><i class="fal fa-map-marker-alt"></i></div>
+                            <div class="offcanvas__contact-text"><a href="#">Colorado Springs, CO</a></div>
+                        </li>
+                        <li class="d-flex align-items-center">
+                            <div class="offcanvas__contact-icon mr-15"><i class="fal fa-envelope"></i></div>
+                            <div class="offcanvas__contact-text"><a href="mailto:hi@onfootllc.com">hi@onfootllc.com</a></div>
+                        </li>
+                    </ul>
+                    <div class="header-button mt-4"><a href="shop-leftsidebar.html" class="theme-btn">Shop Now <i class="far fa-arrow-right"></i></a></div>
+                    <div class="social-icon d-flex align-items-center">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                    </div>
+                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+<div class="offcanvas__overlay"></div>
+
+<!-- Header -->
+<header class="header-section-3">
+    <div class="header-top-section">
+        <div class="container-fluid">
+            <div class="header-top-wrapper">
+                <ul class="contact-list">
+                    <li><i class="far fa-envelope"></i><a href="mailto:hi@onfootllc.com" class="link">hi@onfootllc.com</a></li>
+                    <li><i class="fas fa-map-marker-alt"></i> Colorado Springs, CO</li>
+                </ul>
+                <div class="header-top-right">
+                    <div class="social-icon d-flex align-items-center">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="header-sticky" class="header-1 style-3">
+        <div class="container-fluid">
+            <div class="mega-menu-wrapper">
+                <div class="header-main">
+                    <div class="header-left">
+                        <div class="logo">
+                            <a href="index.html" class="header-logo"><img src="assets/img/logo/logo.svg" alt="logo"></a>
+                            <a href="index.html" class="header-logo-2"><img src="assets/img/logo/onfoot-navbar-logo.svg" alt="logo"></a>
+                        </div>
+                    </div>
+                    <div class="mean__menu-wrapper">
+                        <div class="main-menu">
+                            <nav id="mobile-menu">
+                                <ul>
+                                    <li><a href="index.html">Home</a></li>
+                                    <li class="has-dropdown active">
+                                        <a href="services.html">Services</a>
+                                        <ul class="submenu">
+                                            <li><a href="marketing.html">Marketing</a></li>
+                                            <li><a href="design.html">Design</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="portfolio.html">Portfolio</a></li>
+                                    <li><a href="studio.html">Studio</a></li>
+                                    <li><a href="shop-leftsidebar.html">Printing</a></li>
+                                    <li><a href="contact.html">Contact Us</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="header-right d-flex justify-content-end align-items-center">
+                        <a href="#0" class="search-trigger search-icon"><i class="fal fa-search"></i></a>
+                        <div class="menu-cart"><button id="openButton" class="cart-icon"><i class="far fa-shopping-cart"></i></button></div>
+                        <div class="header__hamburger d-xl-none my-auto"><div class="sidebar__toggle"><i class="far fa-bars"></i></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Cart Sidebar -->
+<div id="targetElement" class="side_bar slideInRight side_bar_hidden">
+    <div class="side_bar_overlay"></div>
+    <div class="cart-title mb-50"><h4>Shopping cart</h4></div>
+    <div class="cartmini__widget">
+        <div class="cartmini__checkout">
+            <div class="cartmini__checkout-title mb-4"><h4>Cart is empty</h4></div>
+            <div class="cartmini__checkout-btn"><a href="shop-leftsidebar.html" class="theme-btn mb-2 w-100">Continue Shopping</a></div>
+        </div>
+    </div>
+    <button id="closeButton" class="x-mark-icon"><i class="fas fa-times"></i></button>
+</div>
+
+<!-- Search -->
+<div class="search-wrap">
+    <div class="search-inner">
+        <i class="fas fa-times search-close" id="search-close"></i>
+        <div class="search-cell">
+            <form method="get"><div class="search-field-holder"><input type="search" class="main-search-input" placeholder="Search..."></div></form>
+        </div>
+    </div>
+</div>
+
+<div class="page-hero">
+    <div class="container">
+        <nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="index.html">Home</a></li><li class="breadcrumb-item active">Services</li></ol></nav>
+        <div class="red-line"></div>
+        <h1>What We Do</h1>
+        <p>From bold marketing campaigns to stunning designs, powerful websites, and premium print — OnFoot delivers it all under one roof.</p>
+        <a href="contact.html" class="theme-btn">Get a Free Quote <i class="far fa-arrow-right"></i></a>
+    </div>
+</div>
+
+<!-- Services Grid -->
+<section class="sec-pad">
+    <div class="container">
+        <div class="text-center mb-5">
+            <span class="sec-badge">Our Services</span>
+            <h2 class="sec-title">Everything Your Brand Needs</h2>
+            <p class="sec-desc mx-auto" style="max-width:580px;">We offer a full suite of creative and business services designed to help you grow, stand out, and succeed.</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay=".1s">
+                <div class="service-card">
+                    <div class="icon"><i class="fas fa-bullhorn"></i></div>
+                    <h4>Marketing</h4>
+                    <p>Data-driven strategies, social media management, paid ads, and campaigns that grow your audience and convert leads into customers.</p>
+                    <a href="marketing.html" style="color:var(--red);font-size:14px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:6px;margin-top:16px;">Learn More <i class="far fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay=".2s">
+                <div class="service-card">
+                    <div class="icon"><i class="fas fa-paint-brush"></i></div>
+                    <h4>Design</h4>
+                    <p>Logo design, brand identity, graphic design, and visual storytelling that makes your business look as good as it performs.</p>
+                    <a href="design.html" style="color:var(--red);font-size:14px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:6px;margin-top:16px;">Learn More <i class="far fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay=".3s">
+                <div class="service-card">
+                    <div class="icon"><i class="fas fa-laptop-code"></i></div>
+                    <h4>Web Development</h4>
+                    <p>Modern, responsive websites and e-commerce platforms built to perform, convert visitors into customers, and scale with your business.</p>
+                    <a href="contact.html" style="color:var(--red);font-size:14px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:6px;margin-top:16px;">Get Started <i class="far fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay=".4s">
+                <div class="service-card">
+                    <div class="icon"><i class="fas fa-print"></i></div>
+                    <h4>Printing</h4>
+                    <p>Premium printing for business cards, brochures, flyers, banners, and more — fast turnaround, vibrant colors, delivered to your door.</p>
+                    <a href="shop-leftsidebar.html" style="color:var(--red);font-size:14px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:6px;margin-top:16px;">Shop Now <i class="far fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats -->
+<section class="sec-pad-sm bg-dark-sec">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-lg-3 col-6 wow fadeInUp" data-wow-delay=".1s"><div class="stat-card"><div class="num">500+</div><div class="label">Happy Clients</div></div></div>
+            <div class="col-lg-3 col-6 wow fadeInUp" data-wow-delay=".2s"><div class="stat-card"><div class="num">15+</div><div class="label">Services Offered</div></div></div>
+            <div class="col-lg-3 col-6 wow fadeInUp" data-wow-delay=".3s"><div class="stat-card"><div class="num">5★</div><div class="label">Average Rating</div></div></div>
+            <div class="col-lg-3 col-6 wow fadeInUp" data-wow-delay=".4s"><div class="stat-card"><div class="num">2–5</div><div class="label">Day Turnaround</div></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works -->
+<section class="sec-pad bg-light-sec">
+    <div class="container">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-5">
+                <span class="sec-badge">Our Process</span>
+                <h2 class="sec-title">How We Work With You</h2>
+                <p class="sec-desc">A simple, transparent process designed to get you results fast — without the headaches.</p>
+            </div>
+            <div class="col-lg-7">
+                <div class="step-card wow fadeInUp" data-wow-delay=".1s"><div class="step-num">1</div><div class="step-content"><h5>Consult</h5><p>We start with a free consultation to understand your goals, brand, and target audience.</p></div></div>
+                <div class="step-card wow fadeInUp" data-wow-delay=".2s"><div class="step-num">2</div><div class="step-content"><h5>Strategize & Design</h5><p>Our team creates a tailored strategy and design concepts aligned with your vision.</p></div></div>
+                <div class="step-card wow fadeInUp" data-wow-delay=".3s"><div class="step-num">3</div><div class="step-content"><h5>Execute & Deliver</h5><p>We bring it to life — whether it's a campaign, a website, or a print run — on time and on budget.</p></div></div>
+                <div class="step-card wow fadeInUp" data-wow-delay=".4s"><div class="step-num">4</div><div class="step-content"><h5>Review & Grow</h5><p>We review results with you and optimize continuously to keep your brand growing.</p></div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-banner">
+    <div class="container">
+        <h2>Ready to Elevate Your Brand?</h2>
+        <p>Let's build something great together. Get in touch today for a free consultation.</p>
+        <a href="contact.html" class="btn-white">Contact Us Today</a>
+        <a href="shop-leftsidebar.html" class="btn-outline-white">Browse Printing</a>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer-section section-bg">
+    <div class="container">
+        <div class="footer-widgets-wrapper">
+            <div class="row">
+                <div class="col-xl-3 col-sm-6 col-md-6 col-lg-4">
+                    <div class="single-footer-widget">
+                        <div class="widget-head"><a href="index.html"><img src="assets/img/logo/logo.svg" alt="logo"></a></div>
+                        <div class="footer-content">
+                            <p>OnFoot is your all-in-one partner for marketing, design, web development, and premium printing — helping businesses grow and stand out.</p>
+                            <div class="social-icon style-2 d-flex align-items-center">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-sm-6 col-md-6 col-lg-4 ps-lg-5">
+                    <div class="single-footer-widget">
+                        <div class="widget-head"><h3>Useful Links</h3></div>
+                        <ul class="list-items">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="services.html">Services</a></li>
+                            <li><a href="portfolio.html">Portfolio</a></li>
+                            <li><a href="studio.html">Studio</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-sm-6 col-md-6 col-lg-4">
+                    <div class="single-footer-widget">
+                        <div class="widget-head"><h3>Contact OnFoot</h3></div>
+                        <ul class="contact-list-2">
+                            <li>
+                                <div class="icon"><i class="far fa-envelope" style="color:#fff;font-size:18px;"></i></div>
+                                <div class="content"><span>Mail Us</span><h3><a href="mailto:hi@onfootllc.com">hi@onfootllc.com</a></h3></div>
+                            </li>
+                            <li>
+                                <div class="icon"><i class="fas fa-map-marker-alt" style="color:#fff;font-size:18px;"></i></div>
+                                <div class="content"><span>Location</span><h3>Colorado Springs, CO</h3></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-sm-6 col-md-6 col-lg-4 ps-lg-5">
+                    <div class="single-footer-widget">
+                        <div class="widget-head"><h3>Our Services</h3></div>
+                        <ul class="list-items">
+                            <li><a href="marketing.html">Marketing</a></li>
+                            <li><a href="design.html">Design</a></li>
+                            <li><a href="studio.html">Studio</a></li>
+                            <li><a href="shop-leftsidebar.html">Printing</a></li>
+                            <li><a href="contact.html">Get a Quote</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="footer-bottom-wrapper justify-content-center">
+                <p>Copyright 2025 &copy; OnFoot. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="assets/js/jquery-3.7.1.min.js"></script>
+<script src="assets/js/viewport.jquery.js"></script>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/gsap/gsap.js"></script>
+<script src="assets/js/gsap/gsap-scroll-trigger.js"></script>
+<script src="assets/js/swiper-bundle.min.js"></script>
+<script src="assets/js/jquery.meanmenu.min.js"></script>
+<script src="assets/js/jquery.magnific-popup.min.js"></script>
+<script src="assets/js/wow.min.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

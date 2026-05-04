@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="OnFoot">
+        <meta name="description" content="OnFoot Portfolio - Our Work in Marketing, Design, Web Development & Printing">
+        <title>Portfolio | OnFoot</title>
+        <link rel="shortcut icon" href="assets/img/favicon.svg">
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/font-awesome.css">
+        <link rel="stylesheet" href="assets/css/animate.css">
+        <link rel="stylesheet" href="assets/css/magnific-popup.css">
+        <link rel="stylesheet" href="assets/css/meanmenu.css">
+        <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+        <link rel="stylesheet" href="assets/css/nice-select.css">
+        <link rel="stylesheet" href="assets/css/main.css">
+        <link rel="stylesheet" href="style.css">
+        <style>
+            /* ── Section Layout ── */
+            .portfolio-type-section { padding: 70px 0; }
+            .section-header { display:flex; align-items:center; gap:18px; margin-bottom:36px; padding-bottom:20px; border-bottom:2px solid #2a2a2a; }
+            .section-icon { width:52px; height:52px; background:#E8132A; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:20px; color:#fff; flex-shrink:0; }
+            .sec-badge { font-size:12px; font-weight:700; color:#E8132A; text-transform:uppercase; letter-spacing:.1em; display:block; margin-bottom:4px; }
+            .sec-type-title { font-size:28px; font-weight:800; color:#fff; margin:0; line-height:1; }
+
+            /* ── Project Grid ── */
+            .proj-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:28px; }
+            @media(max-width:768px){ .proj-grid { grid-template-columns:1fr; } }
+
+            /* ── Project Card ── */
+            .proj-card { background:#1a1a1a; border-radius:16px; overflow:hidden; border:1px solid #2a2a2a; transition:all .35s; box-shadow:0 4px 24px rgba(0,0,0,.4); }
+            .proj-card:hover { transform:translateY(-6px); box-shadow:0 20px 60px rgba(0,0,0,.6); border-color:#E8132A; }
+
+            /* ── Main Preview ── */
+            .proj-main-preview { position:relative; width:100%; height:320px; background:#111; overflow:hidden; }
+            .proj-main-preview .main-img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s; }
+            .proj-card:hover .proj-main-preview .main-img { transform:scale(1.04); }
+            .main-placeholder { width:100%; height:100%; background:#1e1e1e; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; border-bottom:2px dashed #333; }
+            .main-placeholder i { font-size:40px; color:#333; }
+            .main-placeholder span { font-size:12px; color:#444; font-weight:600; }
+
+            /* ── Live Preview Hover ── */
+            .proj-hover-overlay { position:absolute; inset:0; background:rgba(0,0,0,.65); display:flex; align-items:center; justify-content:center; opacity:0; transition:opacity .3s ease; z-index:5; }
+            .proj-card:hover .proj-hover-overlay { opacity:1; }
+            .live-preview-btn { display:inline-flex; align-items:center; gap:10px; background:#E8132A; color:#fff; font-size:14px; font-weight:700; padding:13px 28px; border-radius:50px; text-decoration:none; transform:translateY(16px); transition:transform .35s ease, background .2s; }
+            .proj-card:hover .live-preview-btn { transform:translateY(0); }
+            .live-preview-btn:hover { background:#fff; color:#E8132A; }
+
+            /* ── Thumbnail Strip ── */
+            .proj-thumbnails { display:flex; border-top:1px solid #2a2a2a; background:#111; }
+            .proj-thumb { flex:1; height:80px; overflow:hidden; cursor:pointer; position:relative; border-right:1px solid #2a2a2a; transition:all .2s; }
+            .proj-thumb:last-child { border-right:none; }
+            .proj-thumb img { width:100%; height:100%; object-fit:cover; opacity:.55; transition:opacity .3s, transform .3s; }
+            .proj-thumb:hover img, .proj-thumb.active img { opacity:1; transform:scale(1.05); }
+            .proj-thumb.active::after { content:''; position:absolute; bottom:0; left:0; right:0; height:3px; background:#E8132A; }
+            .proj-thumb-placeholder { width:100%; height:100%; background:#1a1a1a; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; transition:background .2s; }
+            .proj-thumb-placeholder:hover { background:#222; }
+            .proj-thumb-placeholder i { font-size:16px; color:#333; }
+            .proj-thumb-placeholder span { font-size:9px; color:#333; font-weight:600; text-transform:uppercase; }
+
+            /* ── Name Bar ── */
+            .proj-namebar { padding:14px 18px; display:flex; align-items:center; justify-content:space-between; background:#1a1a1a; border-top:1px solid #2a2a2a; }
+            .proj-name { font-size:15px; font-weight:700; color:#fff; margin:0; }
+            .proj-tag { font-size:11px; color:#E8132A; font-weight:700; text-transform:uppercase; letter-spacing:.05em; }
+
+            /* ── CTA ── */
+            .portfolio-cta { background:#E8132A; padding:70px 0; text-align:center; }
+            .portfolio-cta h2 { font-size:34px; font-weight:800; color:#fff; margin-bottom:12px; }
+            .portfolio-cta p { color:rgba(255,255,255,.8); font-size:15px; margin-bottom:28px; }
+        
+            /* Page background */
+            body { background: #fff5f5 !important; }
+            .portfolio-type-section { background: #fff5f5 !important; }
+            .portfolio-type-section:nth-child(even) { background: #fff0f0 !important; }
+            .sec-type-title { color: #111 !important; }
+            .section-header { border-bottom: 2px solid #f0d0d0 !important; }
+        </style>
+    </head>
+
+    <body>
+
+    <div class="mouse-cursor cursor-outer"></div>
+    <div class="mouse-cursor cursor-inner"></div>
+
+    <div class="scroll-up">
+        <svg class="scroll-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+        </svg>
+    </div>
+
+    <!-- Offcanvas -->
+    <div class="fix-area">
+        <div class="offcanvas__info">
+            <div class="offcanvas__wrapper">
+                <div class="offcanvas__content">
+                    <div class="offcanvas__top mb-5 d-flex justify-content-between align-items-center">
+                        <div class="offcanvas__logo">
+                            <a href="index.html"><img src="assets/img/logo/logo-onfoot.jpg" alt="logo-img"></a>
+                        </div>
+                        <div class="offcanvas__close">
+                            <button><i class="fas fa-times"></i></button>
+                        </div>
+                    </div>
+                    <p class="text d-none d-xl-block">OnFoot is your all-in-one creative partner — marketing, design, web development, and premium printing.</p>
+                    <div class="mobile-menu fix mb-3"></div>
+                    <div class="offcanvas__contact">
+                        <h4>Contact Info</h4>
+                        <ul>
+                            <li class="d-flex align-items-center">
+                                <div class="offcanvas__contact-icon"><i class="fal fa-map-marker-alt"></i></div>
+                                <div class="offcanvas__contact-text"><a href="#">Colorado Springs, CO</a></div>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <div class="offcanvas__contact-icon mr-15"><i class="fal fa-envelope"></i></div>
+                                <div class="offcanvas__contact-text"><a href="mailto:hi@onfootllc.com">hi@onfootllc.com</a></div>
+                            </li>
+                        </ul>
+                        <div class="header-button mt-4">
+                            <a href="contact.html" class="theme-btn">Get In Touch <i class="far fa-arrow-right"></i></a>
+                        </div>
+                        <div class="social-icon d-flex align-items-center">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="offcanvas__overlay"></div>
+
+    <!-- Header -->
+    <header class="header-section-3">
+        <div class="header-top-section">
+            <div class="container-fluid">
+                <div class="header-top-wrapper">
+                    <ul class="contact-list">
+                        <li><i class="far fa-envelope"></i><a href="mailto:hi@onfootllc.com" class="link">hi@onfootllc.com</a></li>
+                        <li><i class="fas fa-map-marker-alt"></i> Colorado Springs, CO</li>
+                    </ul>
+                    <div class="header-top-right">
+                        <div class="social-icon d-flex align-items-center">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="header-sticky" class="header-1 style-3">
+            <div class="container-fluid">
+                <div class="mega-menu-wrapper">
+                    <div class="header-main">
+                        <div class="header-left">
+                            <div class="logo">
+                                <a href="index.html" class="header-logo"><img src="assets/img/logo/onfoot-navbar-logo.svg" alt="logo-img"></a>
+                                <a href="index.html" class="header-logo-2"><img src="assets/img/logo/onfoot-navbar-logo.svg" alt="logo-img"></a>
+                            </div>
+                        </div>
+                        <div class="mean__menu-wrapper">
+                            <div class="main-menu">
+                                <nav id="mobile-menu">
+                                    <ul>
+                                        <li><a href="index.html">Home</a></li>
+                                        <li><a href="services.html">Services</a></li>
+                                        <li class="active"><a href="portfolio.html">Portfolio</a></li>
+                                        <li><a href="studio.html">Studio</a></li>
+                                        <li><a href="shop-leftsidebar.html">Printing</a></li>
+                                        <li><a href="contact.html">Contact Us</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="header-right d-flex justify-content-end align-items-center">
+                            <a href="#0" class="search-trigger search-icon"><i class="fal fa-search"></i></a>
+                            <div class="menu-cart">
+                                <button id="openButton" class="cart-icon"><i class="far fa-shopping-cart"></i></button>
+                            </div>
+                            <div class="header__hamburger d-xl-none my-auto">
+                                <div class="sidebar__toggle"><i class="far fa-bars"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Search Area -->
+    <div class="search-wrap">
+        <div class="search-inner">
+            <i class="fas fa-times search-close" id="search-close"></i>
+            <div class="search-cell">
+                <form method="get">
+                    <div class="search-field-holder">
+                        <input type="search" class="main-search-input" placeholder="Search...">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page Banner -->
+    <section style="background: linear-gradient(135deg, #E8132A 0%, #c0101f 40%, #ff6b6b 70%, #fff5f5 100%); padding: 130px 0 70px; position:relative; overflow:hidden;">
+        <div style="position:absolute;top:-60px;right:-60px;width:300px;height:300px;background:rgba(255,255,255,0.06);border-radius:50%;"></div>
+        <div style="position:absolute;bottom:-80px;left:-40px;width:250px;height:250px;background:rgba(255,255,255,0.04);border-radius:50%;"></div>
+        <div class="container" style="position:relative;z-index:2;">
+            <div class="row align-items-center">
+                <div class="col-lg-7 wow fadeInUp">
+                    <nav aria-label="breadcrumb" style="margin-bottom:16px;">
+                        <ol class="breadcrumb" style="background:transparent;padding:0;margin:0;">
+                            <li class="breadcrumb-item"><a href="index.html" style="color:rgba(255,255,255,0.75);text-decoration:none;font-size:13px;">Home</a></li>
+                            <li class="breadcrumb-item active" style="color:#fff;font-size:13px;">Portfolio</li>
+                        </ol>
+                    </nav>
+                    <h1 style="color:#fff;font-size:58px;font-weight:900;line-height:1.1;margin-bottom:16px;text-transform:uppercase;letter-spacing:-1px;">Our <span style="color:#111;-webkit-text-stroke:1px #fff;color:transparent;">Portfolio</span></h1>
+                    <p style="color:rgba(255,255,255,0.85);font-size:16px;line-height:1.7;max-width:500px;margin-bottom:28px;">A showcase of websites we've built — from restaurants and e-commerce stores to corporate platforms and high-converting landing pages.</p>
+                    <div style="display:flex;gap:12px;flex-wrap:wrap;">
+                        <a href="contact.html" style="background:#fff;color:#E8132A;padding:13px 28px;border-radius:8px;font-weight:700;font-size:14px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;">Start a Project <i class="far fa-arrow-right"></i></a>
+                        <a href="#portfolio-work" style="background:transparent;color:#fff;border:2px solid rgba(255,255,255,0.5);padding:13px 28px;border-radius:8px;font-weight:700;font-size:14px;text-decoration:none;">View Work</a>
+                    </div>
+                </div>
+                <div class="col-lg-5 wow fadeInUp d-none d-lg-block" data-wow-delay=".2s">
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;opacity:0.9;">
+                        <div style="background:rgba(255,255,255,0.12);border-radius:12px;padding:20px;text-align:center;backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.2);">
+                            <div style="font-size:32px;font-weight:900;color:#fff;">50+</div>
+                            <div style="font-size:12px;color:rgba(255,255,255,0.75);margin-top:4px;">Websites Built</div>
+                        </div>
+                        <div style="background:rgba(255,255,255,0.12);border-radius:12px;padding:20px;text-align:center;backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.2);">
+                            <div style="font-size:32px;font-weight:900;color:#fff;">4</div>
+                            <div style="font-size:12px;color:rgba(255,255,255,0.75);margin-top:4px;">Specializations</div>
+                        </div>
+                        <div style="background:rgba(255,255,255,0.12);border-radius:12px;padding:20px;text-align:center;backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.2);">
+                            <div style="font-size:32px;font-weight:900;color:#fff;">100%</div>
+                            <div style="font-size:12px;color:rgba(255,255,255,0.75);margin-top:4px;">Client Satisfaction</div>
+                        </div>
+                        <div style="background:rgba(255,255,255,0.12);border-radius:12px;padding:20px;text-align:center;backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.2);">
+                            <div style="font-size:32px;font-weight:900;color:#fff;">5★</div>
+                            <div style="font-size:12px;color:rgba(255,255,255,0.75);margin-top:4px;">Average Rating</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Sections -->
+    
+    <div id="portfolio-work"></div>
+    <!-- Restaurant & Food Websites Section -->
+    <section class="portfolio-type-section" style="background:#111111;">
+        <div class="container">
+            <div class="section-header wow fadeInUp">
+                <div class="section-icon"><i class="fas fa-utensils"></i></div>
+                <div>
+                    <span class="sec-badge">Restaurant & Food Websites</span>
+                    <h2 class="sec-type-title" style="color:#fff;">Restaurant & Food Websites</h2>
+                </div>
+            </div>
+            <div class="proj-grid">
+                
+                <div class="proj-card wow fadeInUp" data-wow-delay=".1s">
+                    <!-- Main Preview -->
+                    <div class="proj-main-preview" id="mainPreview_1">
+                        <div class="main-placeholder">
+                            <i class="fas fa-desktop"></i>
+                            <span>Main Preview Image</span>
+                            <!-- Replace with: <img class="main-img" src="screenshot-1.jpg" alt="Project Preview"> -->
+                        </div>
+                        <!-- Live Preview Hover Button -->
+                        <div class="proj-hover-overlay">
+                            <a href="#" class="live-preview-btn" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live Preview
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Thumbnail Strip -->
+                    <div class="proj-thumbnails">
+                        <div class="proj-thumb active" onclick="switchThumb(this, 1, 1)">
+                            <div class="proj-thumb-placeholder">
+                                <i class="fas fa-image"></i>
+                                <span>Image 1</span>
+                                <!-- Replace with: <img src="screenshot-1.jpg" alt=""> -->
+                            </div>
+                        </div>
+                        <div class="proj-thumb" onclick="switchThumb(this, 1, 2)">
+                            <div class="proj-thumb-placeholder">
+                                <i class="fas fa-image"></i>
+                                <span>Image 2</span>
+                                <!-- Replace with: <img src="screenshot-2.jpg" alt=""> -->
+                            </div>
+                        </div>
+                        <div class="proj-thumb" onclick="switchThumb(this, 1, 3)">
+                            <div class="proj-thumb-placeholder">
+                                <i class="fas fa-image"></i>
+                                <span>Image 3</span>
+                                <!-- Replace with: <img src="screenshot-3.jpg" alt=""> -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Name Bar -->
+                    <div class="proj-namebar">
+                        <h5 class="proj-name">Project 1</h5>
+                        <span class="proj-tag">Web Development</span>
+                    </div>
+                </div>
+                <div class="proj-card wow fadeInUp" data-wow-delay=".2s">
+                    <!-- Main Preview -->
+                    <div class="proj-main-preview" id="mainPreview_2">
+                        <div class="main-placeholder">
+                            <i class="fas fa-desktop"></i>
+                            <span>Main Preview Image</span>
+                            <!-- Replace with: <img class="main-img" src="screenshot-1.jpg" alt="Project Preview"> -->
+                        </div>
+                        <!-- Live Preview Hover Button -->
+                        <div class="proj-hover-overlay">
+                            <a href="#" class="live-preview-btn" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live Preview
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Thumbnail Strip -->
+                    <div class="proj-thumbnails">
+                        <div class="proj-thumb active" onclick="switchThumb(this, 2, 1)">
+                            <div class="proj-thumb-placeholder">
+                                <i class="fas fa-image"></i>
+                                <span>Image 1</span>
+                                <!-- Replace with: <img src="screenshot-1.jpg" alt=""> -->
+                            </div>
+                        </div>
+                        <div class="proj-thumb" onclick="switchThumb(this, 2, 2)">
+                            <div class="proj-thumb-placeholder">
+                                <i class="fas fa-image"></i>
+                                <span>Image 2</span>
+                                <!-- Replace with: <img src="screenshot-2.jpg" alt=""> -->
+                            </div>
+                        </div>
+                        <div class="proj-thumb" onclick="switchThumb(this, 2, 3)">
+                            <div class="proj-thumb-placeholder">
+                                <i class="fas fa-image"></i>
+                                <span>Image 3</span>
+                                <!-- Replace with: <img src="screenshot-3.jpg" alt=""> -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Name Bar -->
+                    <div class="proj-namebar">
+                        <h5 class="proj-name">Project 2</h5>
+                        <span class="proj-tag">Web Development</span>
+                    </div>
+                </div>
+                <div class="proj-card wow fadeInUp" data-wow-delay=".3s">
+                    <!-- Main Preview -->
+                    <div class="proj-main-preview" id="mainPreview_3">
+                        <div class="main-placeholder">
+                            <i class="fas fa-desktop"></i>
+                            <span>Main Preview Image</span>
+                            <!-- Replace with: <img class="main-img" src="screenshot-1.jpg" alt="Project Preview"> -->
+                        </div>
+                        <!-- Live Preview Hover Button -->
+                        <div class="proj-hover-overlay">
+                            <a href="#" class="live-preview-btn" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live Preview
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Thumbnail Strip -->
+                    <div class="proj-thumbnails">
+                        <div class="proj-thumb active" onclick="switchThumb(this, 3, 1)">
+                            <div class="proj-thumb-placeholder">
+                                <i class="fas fa-image"></i>
+                                <span>Image 1</span>
+                                <!-- Replace with: <img src="screenshot-1.jpg" alt=""> -->
+                            </div>
+                        </div>
+                        <div class="proj-thumb" onclick="switchThumb(this, 3, 2)">
+                            <div class="proj-thumb-placeholder">
+                                <i class="fas fa-image"></i>
+                                <span>Image 2</span>
+                                <!-- Replace with: <img src="screenshot-2.jpg" alt=""> -->
+                            </div>
+                        </div>
+                        <div class="proj-thumb" onclick="switchThumb(this, 3, 3)">
+                            <div class="proj-thumb-placeholder">
+                                <i class="fas fa-image"></i>
+                                <span>Image 3</span>
+                                <!-- Replace with: <img src="screenshot-3.jpg" alt=""> -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Name Bar -->
+                    <div class="proj-namebar">
+                        <h5 class="proj-name">Project 3</h5>
+                        <span class="proj-tag">Web Development</span>
+                    </div>
+                </div>
+                <div class="proj-card wow fadeInUp" data-wow-delay=".4s">
+                    <!-- Main Preview -->
+                    <div class="proj-main-preview" id="mainPreview_4">
+                        <div class="main-placeholder">
+                            <i class="fas fa-desktop"></i>
+                            <span>Main Preview Image</span>
+                            <!-- Replace with: <img class="main-img" src="screenshot-1.jpg" alt="Project Preview"> -->
+                        </div>
+                        <!-- Live Preview Hover Button -->
+                        <div class="proj-hover-overlay">
+                            <a href="#" class="live-preview-btn" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live Preview
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Thumbnail Strip -->
+                    <div class="proj-thumbnails">
+                        <div class="proj-thumb active" onclick="switchThumb(this, 4, 1)">
+                            <div class="proj-thumb-placeholder">
+                                <i class="fas fa-image"></i>
+                                <span>Image 1</span>
+                                <!-- Replace with: <img src="screenshot-1.jpg" alt=""> -->
+                            </div>
+                        </div>
+                        <div class="proj-thumb" onclick="switchThumb(this, 4, 2)">
+                            <div class="proj-thumb-placeholder">
+                                <i class="fas fa-image"></i>
+                                <span>Image 2</span>
+                                <!-- Replace with: <img src="screenshot-2.jpg" alt=""> -->
+                            </div>
+                        </div>
+                        <div class="proj-thumb" onclick="switchThumb(this, 4, 3)">
+                            <div class="proj-thumb-placeholder">
+                                <i class="fas fa-image"></i>
+                                <span>Image 3</span>
+                                <!-- Replace with: <img src="screenshot-3.jpg" alt=""> -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Name Bar -->
+                    <div class="proj-namebar">
+                        <h5 class="proj-name">Project 4</h5>
+                        <span class="proj-tag">Web Development</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- E-Commerce Websites Section -->
+    <section class="portfolio-type-section" style="background:#0d0d0d;">
+        <div class="container">
+            <div class="section-header wow fadeInUp">
+                <div class="section-icon"><i class="fas fa-shopping-cart"></i></div>
+                <div>
+                    <span class="sec-badge">E-Commerce Websites</span>
+                    <h2 class="sec-type-title" style="color:#fff;">E-Commerce Websites</h2>
+                </div>
+            </div>
+            <div class="proj-grid">
+                
+                <div class="proj-card wow fadeInUp" data-wow-delay=".1s">
+                    <!-- Main Preview -->
+                    <div class="proj-main-preview" id="mainPreview_1">
+                        <div class="main-placeholder">
+                            <i class="fas fa-desktop"></i>
+                            <span>Main Preview Image</span>
+                            <!-- Replace with: <img class="main-img" src="screenshot-1.jpg" alt="Project Preview"> -->
+                        </div>
+                        <!-- Live Preview Hover Button -->
+                        <div class="proj-hover-overlay">
+                            <a href="#" class="live-preview-btn" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live Preview
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Thumbnail Strip -->
+                    <div class="proj-thumbnails">
+                        <div class="proj-thumb active" onclick="switchThumb(this, 1, 1)">
+                            <div class="proj-thumb-placeholder">
+                                <i class="fas fa-image"></i>
+                                <span>Image 1</span>
+                                <!-- Replace with: <img src="screenshot-1.jpg" alt=""> -->
+                            </div>
+                        </div>
+                        <div class="proj-thumb" onclick="switchThumb(this, 1, 2)">
+                            <div class="proj-thumb-placeholder">
+                                <i class="fas fa-image"></i>
+                                <span>Image 2</span>
+                                <!-- Replace with: <img src="screenshot-2.jpg" alt=""> -->
+                            </div>
+                        </div>
+                        <div class="proj-thumb" onclick="switchThumb(this, 1, 3)">
+                            <div class="proj-thumb-placeholder">
+                                <i class="fas fa-image"></i>
+                                <span>Image 3</span>
+                                <!-- Replace with: <img src="screenshot-3.jpg" alt=""> -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Name Bar -->
+                    <div class="proj-namebar">
+                        <h5 class="proj-name">Project 1</h5>
+                        <span class="proj-tag">Web Development</span>
+                    </div>
+                </div>
+                <div class="proj-card wow fadeInUp" data-wow-delay=".2s">
+                    <!-- Main Preview -->
+                    <div class="proj-main-preview" id="mainPreview_2">
+                        <div class="main-placeholder">
+                            <i class="fas fa-desktop"></i>
+                            <span>Main Preview Image</span>
+                            <!-- Replace with: <img class="main-img" src="screenshot-1.jpg" alt="Project Preview"> -->
+                        </div>
+                        <!-- Live Preview Hover Button -->
+                        <div class="proj-hover-overlay">
+                            <a href="#" class="live-preview-btn" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live Preview
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Thumbnail Strip -->
+                    <div class="proj-thumbnails">
+                        <div class="proj-thumb active" onclick="switchThumb(this, 2, 1)">
+                            <div class="proj-thumb-placeholder">
+                                <i class="fas fa-image"></i>
+                                <span>Image 1</span>
+                                <!-- Replace with: <img src="screenshot-1.jpg" alt=""> -->
+                            </div>
+                        </div>
+                        <div class="proj-thumb" onclick="switchThumb(this, 2, 2)">
+                            <div class="proj-thumb-placeholder">
+                                <i class="fas fa-image"></i>
+                                <span>Image 2</span>
+                                <!-- Replace with: <img src="screenshot-2.jpg" alt=""> -->
+                            </div>
+                        </div>
+                        <div class="proj-thumb" onclick="switchThumb(this, 2, 3)">
+                            <div class="proj-thumb-placeholder">
+                                <i class="fas fa-image"></i>
+                                <span>Image 3</span>
+                                <!-- Replace with: <img src="screenshot-3.jpg" alt=""> -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Name Bar -->
+                    <div class="proj-namebar">
+                        <h5 class="proj-name">Project 2</h5>
+                        <span class="proj-tag">Web Development</span>
+                    </div>
+                </div>
+                <div class="proj-card wow fadeInUp" data-wow-delay=".3s">
+                    <!-- Main Preview -->
+                    <div class="proj-main-preview" id="mainPreview_3">
+                        <div class="main-placeholder">
+                            <i class="fas fa-desktop"></i>
+                            <span>Main Preview Image</span>
+                            <!-- Replace with: <img class="main-img" src="screenshot-1.jpg" alt="Project Preview"> -->
+                        </div>
+                        <!-- Live Preview Hover Button -->
+                        <div class="proj-hover-overlay">
+                            <a href="#" class="live-preview-btn" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live Preview
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Thumbnail Strip -->
+                    <div class="proj-thumbnails">
+                        <div class="proj-thumb active" onclick="switchThumb(this, 3, 1)">
+                            <div class="proj-thumb-placeholder">
+                                <i class="fas fa-image"></i>
+                                <span>Image 1</span>
+                                <!-- Replace with: <img src="screenshot-1.jpg" alt=""> -->
+                            </div>
+                        </div>
+                        <div class="proj-thumb" onclick="switchThumb(this, 3, 2)">
+                            <div class="proj-thumb-placeholder">
+                                <i class="fas fa-image"></i>
+                                <span>Image 2</span>
+                                <!-- Replace with: <img src="screenshot-2.jpg" alt=""> -->
+                            </div>
+                        </div>
+                        <div class="proj-thumb" onclick="switchThumb(this, 3, 3)">
+                            <div class="proj-thumb-placeholder">
+                                <i class="fas fa-image"></i>
+                                <span>Image 3</span>
+                                <!-- Replace with: <img src="screenshot-3.jpg" alt=""> -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Name Bar -->
+                    <div class="proj-namebar">
+                        <h5 class="proj-name">Project 3</h5>
+                        <span class="proj-tag">Web Development</span>
+                    </div>
+                </div>
+                <div class="proj-card wow fadeInUp" data-wow-delay=".4s">
+                    <!-- Main Preview -->
+                    <div class="proj-main-preview" id="mainPreview_4">
+                        <div class="main-placeholder">
+                            <i class="fas fa-desktop"></i>
+                            <span>Main Preview Image</span>
+                            <!-- Replace with: <img class="main-img" src="screenshot-1.jpg" alt="Project Preview"> -->
+                        </div>
+                        <!-- Live Preview Hover Button -->
+                        <div class="proj-hover-overlay">
+                            <a href="#" class="live-preview-btn" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live Preview
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Thumbnail Strip -->
+                    <div class="proj-thumbnails">
+                        <div class="proj-thumb active" onclick="switchThumb(this, 4, 1)">
+                            <div class="proj-thumb-placeholder">
+                                <i class="fas fa-image"></i>
+                                <span>Image 1</span>
+                                <!-- Replace with: <img src="screenshot-1.jpg" alt=""> -->
+                            </div>
+                        </div>
+                        <div class="proj-thumb" onclick="switchThumb(this, 4, 2)">
+                            <div class="proj-thumb-placeholder">
+                                <i class="fas fa-image"></i>
+                                <span>Image 2</span>
+                                <!-- Replace with: <img src="screenshot-2.jpg" alt=""> -->
+                            </div>
+                        </div>
+                        <div class="proj-thumb" onclick="switchThumb(this, 4, 3)">
+                            <div class="proj-thumb-placeholder">
+                                <i class="fas fa-image"></i>
+                                <span>Image 3</span>
+                                <!-- Replace with: <img src="screenshot-3.jpg" alt=""> -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Name Bar -->
+                    <div class="proj-namebar">
+                        <h5 class="proj-name">Project 4</h5>
+                        <span class="proj-tag">Web Development</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business & Corporate Websites Section -->
+    <section class="portfolio-type-section" style="background:#111111;">
+        <div class="container">
+            <div class="section-header wow fadeInUp">
+                <div class="section-icon"><i class="fas fa-building"></i></div>
+                <div>
+                    <span class="sec-badge">Business & Corporate Websites</span>
+                    <h2 class="sec-type-title" style="color:#fff;">Business & Corporate Websites</h2>
+                </div>
+            </div>
+            <div class="proj-grid">
+                
+                <div class="proj-card wow fadeInUp" data-wow-delay=".1s">
+                    <!-- Main Preview -->
+                    <div class="proj-main-preview" id="mainPreview_1">
+                        <div class="main-placeholder">
+                            <i class="fas fa-desktop"></i>
+                            <span>Main Preview Image</span>
+                            <!-- Replace with: <img class="main-img" src="screenshot-1.jpg" alt="Project Preview"> -->
+                        </div>
+                        <!-- Live Preview Hover Button -->
+                        <div class="proj-hover-overlay">
+                            <a href="#" class="live-preview-btn" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live Preview
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Thumbnail Strip -->
+                    <div class="proj-thumbnails">
+                        <div class="proj-thumb active" onclick="switchThumb(this, 1, 1)">
+                            <div class="proj-thumb-placeholder">
+                                <i class="fas fa-image"></i>
+                                <span>Image 1</span>
+                                <!-- Replace with: <img src="screenshot-1.jpg" alt=""> -->
+                            </div>
+                        </div>
+                        <div class="proj-thumb" onclick="switchThumb(this, 1, 2)">
+                            <div class="proj-thumb-placeholder">
+                                <i class="fas fa-image"></i>
+                                <span>Image 2</span>
+                                <!-- Replace with: <img src="screenshot-2.jpg" alt=""> -->
+                            </div>
+                        </div>
+                        <div class="proj-thumb" onclick="switchThumb(this, 1, 3)">
+                            <div class="proj-thumb-placeholder">
+                                <i class="fas fa-image"></i>
+                                <span>Image 3</span>
+                                <!-- Replace with: <img src="screenshot-3.jpg" alt=""> -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Name Bar -->
+                    <div class="proj-namebar">
+                        <h5 class="proj-name">Project 1</h5>
+                        <span class="proj-tag">Web Development</span>
+                    </div>
+                </div>
+                <div class="proj-card wow fadeInUp" data-wow-delay=".2s">
+                    <!-- Main Preview -->
+                    <div class="proj-main-preview" id="mainPreview_2">
+                        <div class="main-placeholder">
+                            <i class="fas fa-desktop"></i>
+                            <span>Main Preview Image</span>
+                            <!-- Replace with: <img class="main-img" src="screenshot-1.jpg" alt="Project Preview"> -->
+                        </div>
+                        <!-- Live Preview Hover Button -->
+                        <div class="proj-hover-overlay">
+                            <a href="#" class="live-preview-btn" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live Preview
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Thumbnail Strip -->
+                    <div class="proj-thumbnails">
+                        <div class="proj-thumb active" onclick="switchThumb(this, 2, 1)">
+                            <div class="proj-thumb-placeholder">
+                                <i class="fas fa-image"></i>
+                                <span>Image 1</span>
+                                <!-- Replace with: <img src="screenshot-1.jpg" alt=""> -->
+                            </div>
+                        </div>
+                        <div class="proj-thumb" onclick="switchThumb(this, 2, 2)">
+                            <div class="proj-thumb-placeholder">
+                                <i class="fas fa-image"></i>
+                                <span>Image 2</span>
+                                <!-- Replace with: <img src="screenshot-2.jpg" alt=""> -->
+                            </div>
+                        </div>
+                        <div class="proj-thumb" onclick="switchThumb(this, 2, 3)">
+                            <div class="proj-thumb-placeholder">
+                                <i class="fas fa-image"></i>
+                                <span>Image 3</span>
+                                <!-- Replace with: <img src="screenshot-3.jpg" alt=""> -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Name Bar -->
+                    <div class="proj-namebar">
+                        <h5 class="proj-name">Project 2</h5>
+                        <span class="proj-tag">Web Development</span>
+                    </div>
+                </div>
+                <div class="proj-card wow fadeInUp" data-wow-delay=".3s">
+                    <!-- Main Preview -->
+                    <div class="proj-main-preview" id="mainPreview_3">
+                        <div class="main-placeholder">
+                            <i class="fas fa-desktop"></i>
+                            <span>Main Preview Image</span>
+                            <!-- Replace with: <img class="main-img" src="screenshot-1.jpg" alt="Project Preview"> -->
+                        </div>
+                        <!-- Live Preview Hover Button -->
+                        <div class="proj-hover-overlay">
+                            <a href="#" class="live-preview-btn" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live Preview
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Thumbnail Strip -->
+                    <div class="proj-thumbnails">
+                        <div class="proj-thumb active" onclick="switchThumb(this, 3, 1)">
+                            <div class="proj-thumb-placeholder">
+                                <i class="fas fa-image"></i>
+                                <span>Image 1</span>
+                                <!-- Replace with: <img src="screenshot-1.jpg" alt=""> -->
+                            </div>
+                        </div>
+                        <div class="proj-thumb" onclick="switchThumb(this, 3, 2)">
+                            <div class="proj-thumb-placeholder">
+                                <i class="fas fa-image"></i>
+                                <span>Image 2</span>
+                                <!-- Replace with: <img src="screenshot-2.jpg" alt=""> -->
+                            </div>
+                        </div>
+                        <div class="proj-thumb" onclick="switchThumb(this, 3, 3)">
+                            <div class="proj-thumb-placeholder">
+                                <i class="fas fa-image"></i>
+                                <span>Image 3</span>
+                                <!-- Replace with: <img src="screenshot-3.jpg" alt=""> -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Name Bar -->
+                    <div class="proj-namebar">
+                        <h5 class="proj-name">Project 3</h5>
+                        <span class="proj-tag">Web Development</span>
+                    </div>
+                </div>
+                <div class="proj-card wow fadeInUp" data-wow-delay=".4s">
+                    <!-- Main Preview -->
+                    <div class="proj-main-preview" id="mainPreview_4">
+                        <div class="main-placeholder">
+                            <i class="fas fa-desktop"></i>
+                            <span>Main Preview Image</span>
+                            <!-- Replace with: <img class="main-img" src="screenshot-1.jpg" alt="Project Preview"> -->
+                        </div>
+                        <!-- Live Preview Hover Button -->
+                        <div class="proj-hover-overlay">
+                            <a href="#" class="live-preview-btn" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live Preview
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Thumbnail Strip -->
+                    <div class="proj-thumbnails">
+                        <div class="proj-thumb active" onclick="switchThumb(this, 4, 1)">
+                            <div class="proj-thumb-placeholder">
+                                <i class="fas fa-image"></i>
+                                <span>Image 1</span>
+                                <!-- Replace with: <img src="screenshot-1.jpg" alt=""> -->
+                            </div>
+                        </div>
+                        <div class="proj-thumb" onclick="switchThumb(this, 4, 2)">
+                            <div class="proj-thumb-placeholder">
+                                <i class="fas fa-image"></i>
+                                <span>Image 2</span>
+                                <!-- Replace with: <img src="screenshot-2.jpg" alt=""> -->
+                            </div>
+                        </div>
+                        <div class="proj-thumb" onclick="switchThumb(this, 4, 3)">
+                            <div class="proj-thumb-placeholder">
+                                <i class="fas fa-image"></i>
+                                <span>Image 3</span>
+                                <!-- Replace with: <img src="screenshot-3.jpg" alt=""> -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Name Bar -->
+                    <div class="proj-namebar">
+                        <h5 class="proj-name">Project 4</h5>
+                        <span class="proj-tag">Web Development</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Landing Pages Section -->
+    <section class="portfolio-type-section" style="background:#0d0d0d;">
+        <div class="container">
+            <div class="section-header wow fadeInUp">
+                <div class="section-icon"><i class="fas fa-rocket"></i></div>
+                <div>
+                    <span class="sec-badge">Landing Pages</span>
+                    <h2 class="sec-type-title" style="color:#fff;">Landing Pages</h2>
+                </div>
+            </div>
+            <div class="proj-grid">
+                
+                <div class="proj-card wow fadeInUp" data-wow-delay=".1s">
+                    <!-- Main Preview -->
+                    <div class="proj-main-preview" id="mainPreview_1">
+                        <div class="main-placeholder">
+                            <i class="fas fa-desktop"></i>
+                            <span>Main Preview Image</span>
+                            <!-- Replace with: <img class="main-img" src="screenshot-1.jpg" alt="Project Preview"> -->
+                        </div>
+                        <!-- Live Preview Hover Button -->
+                        <div class="proj-hover-overlay">
+                            <a href="#" class="live-preview-btn" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live Preview
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Thumbnail Strip -->
+                    <div class="proj-thumbnails">
+                        <div class="proj-thumb active" onclick="switchThumb(this, 1, 1)">
+                            <div class="proj-thumb-placeholder">
+                                <i class="fas fa-image"></i>
+                                <span>Image 1</span>
+                                <!-- Replace with: <img src="screenshot-1.jpg" alt=""> -->
+                            </div>
+                        </div>
+                        <div class="proj-thumb" onclick="switchThumb(this, 1, 2)">
+                            <div class="proj-thumb-placeholder">
+                                <i class="fas fa-image"></i>
+                                <span>Image 2</span>
+                                <!-- Replace with: <img src="screenshot-2.jpg" alt=""> -->
+                            </div>
+                        </div>
+                        <div class="proj-thumb" onclick="switchThumb(this, 1, 3)">
+                            <div class="proj-thumb-placeholder">
+                                <i class="fas fa-image"></i>
+                                <span>Image 3</span>
+                                <!-- Replace with: <img src="screenshot-3.jpg" alt=""> -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Name Bar -->
+                    <div class="proj-namebar">
+                        <h5 class="proj-name">Project 1</h5>
+                        <span class="proj-tag">Web Development</span>
+                    </div>
+                </div>
+                <div class="proj-card wow fadeInUp" data-wow-delay=".2s">
+                    <!-- Main Preview -->
+                    <div class="proj-main-preview" id="mainPreview_2">
+                        <div class="main-placeholder">
+                            <i class="fas fa-desktop"></i>
+                            <span>Main Preview Image</span>
+                            <!-- Replace with: <img class="main-img" src="screenshot-1.jpg" alt="Project Preview"> -->
+                        </div>
+                        <!-- Live Preview Hover Button -->
+                        <div class="proj-hover-overlay">
+                            <a href="#" class="live-preview-btn" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live Preview
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Thumbnail Strip -->
+                    <div class="proj-thumbnails">
+                        <div class="proj-thumb active" onclick="switchThumb(this, 2, 1)">
+                            <div class="proj-thumb-placeholder">
+                                <i class="fas fa-image"></i>
+                                <span>Image 1</span>
+                                <!-- Replace with: <img src="screenshot-1.jpg" alt=""> -->
+                            </div>
+                        </div>
+                        <div class="proj-thumb" onclick="switchThumb(this, 2, 2)">
+                            <div class="proj-thumb-placeholder">
+                                <i class="fas fa-image"></i>
+                                <span>Image 2</span>
+                                <!-- Replace with: <img src="screenshot-2.jpg" alt=""> -->
+                            </div>
+                        </div>
+                        <div class="proj-thumb" onclick="switchThumb(this, 2, 3)">
+                            <div class="proj-thumb-placeholder">
+                                <i class="fas fa-image"></i>
+                                <span>Image 3</span>
+                                <!-- Replace with: <img src="screenshot-3.jpg" alt=""> -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Name Bar -->
+                    <div class="proj-namebar">
+                        <h5 class="proj-name">Project 2</h5>
+                        <span class="proj-tag">Web Development</span>
+                    </div>
+                </div>
+                <div class="proj-card wow fadeInUp" data-wow-delay=".3s">
+                    <!-- Main Preview -->
+                    <div class="proj-main-preview" id="mainPreview_3">
+                        <div class="main-placeholder">
+                            <i class="fas fa-desktop"></i>
+                            <span>Main Preview Image</span>
+                            <!-- Replace with: <img class="main-img" src="screenshot-1.jpg" alt="Project Preview"> -->
+                        </div>
+                        <!-- Live Preview Hover Button -->
+                        <div class="proj-hover-overlay">
+                            <a href="#" class="live-preview-btn" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live Preview
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Thumbnail Strip -->
+                    <div class="proj-thumbnails">
+                        <div class="proj-thumb active" onclick="switchThumb(this, 3, 1)">
+                            <div class="proj-thumb-placeholder">
+                                <i class="fas fa-image"></i>
+                                <span>Image 1</span>
+                                <!-- Replace with: <img src="screenshot-1.jpg" alt=""> -->
+                            </div>
+                        </div>
+                        <div class="proj-thumb" onclick="switchThumb(this, 3, 2)">
+                            <div class="proj-thumb-placeholder">
+                                <i class="fas fa-image"></i>
+                                <span>Image 2</span>
+                                <!-- Replace with: <img src="screenshot-2.jpg" alt=""> -->
+                            </div>
+                        </div>
+                        <div class="proj-thumb" onclick="switchThumb(this, 3, 3)">
+                            <div class="proj-thumb-placeholder">
+                                <i class="fas fa-image"></i>
+                                <span>Image 3</span>
+                                <!-- Replace with: <img src="screenshot-3.jpg" alt=""> -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Name Bar -->
+                    <div class="proj-namebar">
+                        <h5 class="proj-name">Project 3</h5>
+                        <span class="proj-tag">Web Development</span>
+                    </div>
+                </div>
+                <div class="proj-card wow fadeInUp" data-wow-delay=".4s">
+                    <!-- Main Preview -->
+                    <div class="proj-main-preview" id="mainPreview_4">
+                        <div class="main-placeholder">
+                            <i class="fas fa-desktop"></i>
+                            <span>Main Preview Image</span>
+                            <!-- Replace with: <img class="main-img" src="screenshot-1.jpg" alt="Project Preview"> -->
+                        </div>
+                        <!-- Live Preview Hover Button -->
+                        <div class="proj-hover-overlay">
+                            <a href="#" class="live-preview-btn" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live Preview
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Thumbnail Strip -->
+                    <div class="proj-thumbnails">
+                        <div class="proj-thumb active" onclick="switchThumb(this, 4, 1)">
+                            <div class="proj-thumb-placeholder">
+                                <i class="fas fa-image"></i>
+                                <span>Image 1</span>
+                                <!-- Replace with: <img src="screenshot-1.jpg" alt=""> -->
+                            </div>
+                        </div>
+                        <div class="proj-thumb" onclick="switchThumb(this, 4, 2)">
+                            <div class="proj-thumb-placeholder">
+                                <i class="fas fa-image"></i>
+                                <span>Image 2</span>
+                                <!-- Replace with: <img src="screenshot-2.jpg" alt=""> -->
+                            </div>
+                        </div>
+                        <div class="proj-thumb" onclick="switchThumb(this, 4, 3)">
+                            <div class="proj-thumb-placeholder">
+                                <i class="fas fa-image"></i>
+                                <span>Image 3</span>
+                                <!-- Replace with: <img src="screenshot-3.jpg" alt=""> -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Name Bar -->
+                    <div class="proj-namebar">
+                        <h5 class="proj-name">Project 4</h5>
+                        <span class="proj-tag">Web Development</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- CTA -->
+    <div class="portfolio-cta" style="background:#E8132A;">
+        <div class="container">
+            <h2 style="color:#fff;">Want a Website Like These?</h2>
+            <p style="color:rgba(255,255,255,0.8);">Let's build something amazing for your business. Get in touch today.</p>
+            <a href="contact.html" style="background:#fff;color:#E8132A;padding:14px 32px;border-radius:8px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:8px;">Start Your Project <i class="far fa-arrow-right"></i></a>
+        </div>
+    </div>
+
+    
+    <script>
+    function switchThumb(el, cardNum, imgNum) {
+        // Update active thumb
+        const thumbs = el.parentElement.querySelectorAll('.proj-thumb');
+        thumbs.forEach(t => t.classList.remove('active'));
+        el.classList.add('active');
+        // Update main preview (if real images are used)
+        const main = document.getElementById('mainPreview_' + cardNum);
+        const img = el.querySelector('img');
+        if (img && main) {
+            let mainImg = main.querySelector('.main-img');
+            if (!mainImg) {
+                mainImg = document.createElement('img');
+                mainImg.className = 'main-img';
+                main.prepend(mainImg);
+            }
+            mainImg.src = img.src;
+        }
+    }
+    </script>
+
+<!-- Footer -->
+    <footer class="footer-section section-bg">
+        <div class="container">
+            <div class="footer-widgets-wrapper">
+                <div class="row">
+                    <div class="col-xl-3 col-sm-6 col-md-6 col-lg-4 wow fadeInUp" data-wow-delay=".2s">
+                        <div class="single-footer-widget">
+                            <div class="widget-head"><a href="index.html"><img src="assets/img/logo/logo.svg" alt="logo-img"></a></div>
+                            <div class="footer-content">
+                                <p>OnFoot is your trusted partner for premium printing and custom design solutions. We help businesses across the U.S. create impactful materials that drive growth and brand recognition.</p>
+                                <div class="social-icon style-2 d-flex align-items-center">
+                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="#"><i class="fab fa-vimeo-v"></i></a>
+                                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6 col-md-6 col-lg-4 ps-lg-5 wow fadeInUp" data-wow-delay=".4s">
+                        <div class="single-footer-widget">
+                            <div class="widget-head"><h3>Useful Links</h3></div>
+                            <ul class="list-items">
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="services.html">Services</a></li>
+                                <li><a href="portfolio.html">Portfolio</a></li>
+                                <li><a href="studio.html">Studio</a></li>
+                                <li><a href="contact.html">Contact Us</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6 col-md-6 col-lg-4 wow fadeInUp" data-wow-delay=".6s">
+                        <div class="single-footer-widget">
+                            <div class="widget-head"><h3>Contact OnFoot</h3></div>
+                            <ul class="contact-list-2">
+                                <li>
+                                    <div class="icon"><i class="far fa-phone" style="color:#fff;"></i></div>
+                                    <div class="content"><span>Call Us</span><h3><a href="tel:+17195550100">+1 (719) 555-0100</a></h3></div>
+                                </li>
+                                <li>
+                                    <div class="icon"><i class="far fa-envelope" style="color:#fff;"></i></div>
+                                    <div class="content"><span>Mail Us</span><h3><a href="mailto:hi@onfootllc.com" class="link">hi@onfootllc.com</a></h3></div>
+                                </li>
+                                <li>
+                                    <div class="icon"><i class="fas fa-map-marker-alt" style="color:#fff;"></i></div>
+                                    <div class="content"><span>Location</span><h3>Colorado Springs, CO</h3></div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6 col-md-6 col-lg-4 ps-lg-5 wow fadeInUp" data-wow-delay=".8s">
+                        <div class="single-footer-widget">
+                            <div class="widget-head"><h3>Our Services</h3></div>
+                            <ul class="list-items">
+                                <li><a href="services.html#marketing">Social Media Marketing</a></li>
+                                <li><a href="services.html#design">Brand Identity Design</a></li>
+                                <li><a href="services.html#design">Print Design</a></li>
+                                <li><a href="shop-leftsidebar.html">Printing</a></li>
+                                <li><a href="studio.html">Studio & Videography</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="footer-bottom-wrapper justify-content-center">
+                    <p class="wow fadeInUp" data-wow-delay=".3s">Copyright 2025 © OnFoot LLC. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <script src="assets/js/viewport.jquery.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/gsap/gsap.js"></script>
+    <script src="assets/js/gsap/gsap-scroll-to-plugin.js"></script>
+    <script src="assets/js/gsap/gsap-scroll-smoother.js"></script>
+    <script src="assets/js/gsap/gsap-scroll-trigger.js"></script>
+    <script src="assets/js/gsap/gsap-split-text.js"></script>
+    <script src="assets/js/jquery.nice-select.min.js"></script>
+    <script src="assets/js/jquery.waypoints.js"></script>
+    <script src="assets/js/jquery.counterup.min.js"></script>
+    <script src="assets/js/swiper-bundle.min.js"></script>
+    <script src="assets/js/jquery.meanmenu.min.js"></script>
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="assets/js/wow.min.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <script>
+        // Portfolio filter
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                const filter = this.dataset.filter;
+                document.querySelectorAll('.portfolio-card').forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+            });
+        });
+    </script>
+    </body>
+</html>

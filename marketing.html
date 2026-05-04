@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Marketing | OnFoot</title>
+    <link rel="shortcut icon" href="assets/img/favicon.svg">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="assets/css/meanmenu.css">
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --red: #E8132A;
+            --red-dark: #c0101f;
+            --dark: #111111;
+            --light-bg: #fff5f5;
+            --text: #222222;
+            --muted: #666666;
+            --border: #e8e8e8;
+        }
+        /* Page Hero */
+        .page-hero { background: var(--dark); padding: 160px 0 80px; position: relative; overflow: hidden; margin-top: 0; }
+        .page-hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(232,19,42,0.15) 0%, transparent 60%); }
+        .page-hero .container { position: relative; z-index: 1; }
+        .page-hero h1 { font-size: 52px; font-weight: 800; color: #fff; margin-bottom: 16px; line-height: 1.15; }
+        .page-hero p { font-size: 18px; color: #aaa; max-width: 560px; line-height: 1.7; margin-bottom: 24px; }
+        .page-hero .breadcrumb { background: none; padding: 0; margin-bottom: 20px; }
+        .page-hero .breadcrumb-item a { color: var(--red); text-decoration: none; }
+        .page-hero .breadcrumb-item.active { color: #aaa; }
+        .page-hero .breadcrumb-item+.breadcrumb-item::before { color: #555; }
+        .red-line { width: 60px; height: 4px; background: var(--red); border-radius: 2px; margin-bottom: 20px; }
+
+        /* Section styles */
+        .sec-pad { padding: 80px 0; }
+        .sec-pad-sm { padding: 60px 0; }
+        .bg-dark-sec { background: var(--dark); }
+        .bg-light-sec { background: var(--light-bg); }
+        .sec-badge { display: inline-block; font-size: 12px; font-weight: 700; color: var(--red); text-transform: uppercase; letter-spacing: 0.1em; background: rgba(232,19,42,0.08); padding: 6px 14px; border-radius: 20px; margin-bottom: 14px; }
+        .sec-title { font-size: 36px; font-weight: 800; color: var(--dark); line-height: 1.2; margin-bottom: 16px; }
+        .sec-title.light { color: #fff; }
+        .sec-desc { font-size: 16px; color: var(--muted); line-height: 1.75; }
+        .sec-desc.light { color: #aaa; }
+
+        /* Service Cards */
+        .service-card { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 32px 28px; transition: all 0.3s; height: 100%; }
+        .service-card:hover { border-color: var(--red); box-shadow: 0 8px 30px rgba(232,19,42,0.1); transform: translateY(-4px); }
+        .service-card .icon { width: 60px; height: 60px; background: var(--light-bg); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; color: var(--red); margin-bottom: 20px; }
+        .service-card h4 { font-size: 20px; font-weight: 700; color: var(--dark); margin-bottom: 12px; }
+        .service-card p { font-size: 14px; color: var(--muted); line-height: 1.7; margin: 0; }
+
+        /* Stats */
+        .stat-card { text-align: center; padding: 40px 20px; }
+        .stat-card .num { font-size: 52px; font-weight: 800; color: var(--red); line-height: 1; }
+        .stat-card .label { font-size: 15px; color: #aaa; margin-top: 8px; }
+
+        /* Process steps */
+        .step-card { display: flex; gap: 20px; align-items: flex-start; margin-bottom: 32px; }
+        .step-num { width: 48px; height: 48px; background: var(--red); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 800; flex-shrink: 0; }
+        .step-content h5 { font-size: 18px; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
+        .step-content p { font-size: 14px; color: var(--muted); margin: 0; line-height: 1.65; }
+
+        /* Portfolio grid */
+        .port-card { position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 4/3; cursor: pointer; }
+        .port-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+        .port-card:hover img { transform: scale(1.07); }
+        .port-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(17,17,17,0.88), rgba(232,19,42,0.2)); opacity: 0; transition: opacity 0.3s; display: flex; flex-direction: column; justify-content: flex-end; padding: 20px; }
+        .port-card:hover .port-overlay { opacity: 1; }
+        .port-overlay h5 { color: #fff; font-size: 17px; font-weight: 700; margin: 0 0 4px; }
+        .port-overlay span { color: var(--red); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; }
+
+        /* CTA banner */
+        .cta-banner { background: var(--red); padding: 70px 0; text-align: center; }
+        .cta-banner h2 { font-size: 36px; font-weight: 800; color: #fff; margin-bottom: 12px; }
+        .cta-banner p { color: rgba(255,255,255,0.85); font-size: 16px; margin-bottom: 28px; }
+        .btn-white { background: #fff; color: var(--red); border: none; padding: 14px 32px; border-radius: 8px; font-size: 15px; font-weight: 700; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s; }
+        .btn-white:hover { background: var(--dark); color: #fff; }
+        .btn-outline-white { background: transparent; color: #fff; border: 2px solid #fff; padding: 12px 30px; border-radius: 8px; font-size: 15px; font-weight: 700; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s; margin-left: 12px; }
+        .btn-outline-white:hover { background: #fff; color: var(--red); }
+
+        /* Team card */
+        .team-card { border-radius: 12px; overflow: hidden; background: #fff; border: 1px solid var(--border); transition: all 0.3s; }
+        .team-card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.1); transform: translateY(-4px); }
+        .team-img { width: 100%; aspect-ratio: 1; background: var(--light-bg); display: flex; align-items: center; justify-content: center; font-size: 60px; color: var(--red); }
+        .team-info { padding: 20px; text-align: center; }
+        .team-info h5 { font-size: 17px; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
+        .team-info span { font-size: 13px; color: var(--muted); }
+
+        /* Feature list */
+        .feature-list { list-style: none; padding: 0; margin: 0; }
+        .feature-list li { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px; font-size: 15px; color: var(--text); }
+        .feature-list li i { color: var(--red); font-size: 16px; margin-top: 2px; flex-shrink: 0; }
+    </style>
+</head>
+<body>
+<div class="mouse-cursor cursor-outer"></div>
+<div class="mouse-cursor cursor-inner"></div>
+<div class="scroll-up">
+    <svg class="scroll-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+    </svg>
+</div>
+
+<!-- Offcanvas -->
+<div class="fix-area">
+    <div class="offcanvas__info">
+        <div class="offcanvas__wrapper">
+            <div class="offcanvas__content">
+                <div class="offcanvas__top mb-5 d-flex justify-content-between align-items-center">
+                    <div class="offcanvas__logo"><a href="index.html"><img src="assets/img/logo/logo-onfoot.jpg" alt="logo"></a></div>
+                    <div class="offcanvas__close"><button><i class="fas fa-times"></i></button></div>
+                </div>
+                <div class="mobile-menu fix mb-3"></div>
+                <div class="offcanvas__contact">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li class="d-flex align-items-center">
+                            <div class="offcanvas__contact-icon"><i class="fal fa-map-marker-alt"></i></div>
+                            <div class="offcanvas__contact-text"><a href="#">Colorado Springs, CO</a></div>
+                        </li>
+                        <li class="d-flex align-items-center">
+                            <div class="offcanvas__contact-icon mr-15"><i class="fal fa-envelope"></i></div>
+                            <div class="offcanvas__contact-text"><a href="mailto:hi@onfootllc.com">hi@onfootllc.com</a></div>
+                        </li>
+                    </ul>
+                    <div class="header-button mt-4"><a href="shop-leftsidebar.html" class="theme-btn">Shop Now <i class="far fa-arrow-right"></i></a></div>
+                    <div class="social-icon d-flex align-items-center">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                    </div>
+                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+<div class="offcanvas__overlay"></div>
+
+<!-- Header -->
+<header class="header-section-3">
+    <div class="header-top-section">
+        <div class="container-fluid">
+            <div class="header-top-wrapper">
+                <ul class="contact-list">
+                    <li><i class="far fa-envelope"></i><a href="mailto:hi@onfootllc.com" class="link">hi@onfootllc.com</a></li>
+                    <li><i class="fas fa-map-marker-alt"></i> Colorado Springs, CO</li>
+                </ul>
+                <div class="header-top-right">
+                    <div class="social-icon d-flex align-items-center">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="header-sticky" class="header-1 style-3">
+        <div class="container-fluid">
+            <div class="mega-menu-wrapper">
+                <div class="header-main">
+                    <div class="header-left">
+                        <div class="logo">
+                            <a href="index.html" class="header-logo"><img src="assets/img/logo/logo.svg" alt="logo"></a>
+                            <a href="index.html" class="header-logo-2"><img src="assets/img/logo/onfoot-navbar-logo.svg" alt="logo"></a>
+                        </div>
+                    </div>
+                    <div class="mean__menu-wrapper">
+                        <div class="main-menu">
+                            <nav id="mobile-menu">
+                                <ul>
+                                    <li><a href="index.html">Home</a></li>
+                                    <li class="has-dropdown active">
+                                        <a href="services.html">Services</a>
+                                        <ul class="submenu">
+                                            <li><a href="marketing.html">Marketing</a></li>
+                                            <li><a href="design.html">Design</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="portfolio.html">Portfolio</a></li>
+                                    <li><a href="studio.html">Studio</a></li>
+                                    <li><a href="shop-leftsidebar.html">Printing</a></li>
+                                    <li><a href="contact.html">Contact Us</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="header-right d-flex justify-content-end align-items-center">
+                        <a href="#0" class="search-trigger search-icon"><i class="fal fa-search"></i></a>
+                        <div class="menu-cart"><button id="openButton" class="cart-icon"><i class="far fa-shopping-cart"></i></button></div>
+                        <div class="header__hamburger d-xl-none my-auto"><div class="sidebar__toggle"><i class="far fa-bars"></i></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Cart Sidebar -->
+<div id="targetElement" class="side_bar slideInRight side_bar_hidden">
+    <div class="side_bar_overlay"></div>
+    <div class="cart-title mb-50"><h4>Shopping cart</h4></div>
+    <div class="cartmini__widget">
+        <div class="cartmini__checkout">
+            <div class="cartmini__checkout-title mb-4"><h4>Cart is empty</h4></div>
+            <div class="cartmini__checkout-btn"><a href="shop-leftsidebar.html" class="theme-btn mb-2 w-100">Continue Shopping</a></div>
+        </div>
+    </div>
+    <button id="closeButton" class="x-mark-icon"><i class="fas fa-times"></i></button>
+</div>
+
+<!-- Search -->
+<div class="search-wrap">
+    <div class="search-inner">
+        <i class="fas fa-times search-close" id="search-close"></i>
+        <div class="search-cell">
+            <form method="get"><div class="search-field-holder"><input type="search" class="main-search-input" placeholder="Search..."></div></form>
+        </div>
+    </div>
+</div>
+
+<div class="page-hero">
+    <div class="container">
+        <nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="index.html">Home</a></li><li class="breadcrumb-item"><a href="services.html">Services</a></li><li class="breadcrumb-item active">Marketing</li></ol></nav>
+        <div class="red-line"></div>
+        <h1>Marketing That<br>Drives Real Results</h1>
+        <p>We craft data-driven marketing strategies that grow your audience, generate leads, and turn browsers into loyal customers.</p>
+        <a href="contact.html" class="theme-btn">Get a Free Strategy Call <i class="far fa-arrow-right"></i></a>
+    </div>
+</div>
+
+<!-- What We Offer -->
+<section class="sec-pad">
+    <div class="container">
+        <div class="text-center mb-5">
+            <span class="sec-badge">Marketing Services</span>
+            <h2 class="sec-title">What We Offer</h2>
+            <p class="sec-desc mx-auto" style="max-width:560px;">From social media to paid advertising, we cover every channel needed to grow your brand.</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".1s"><div class="service-card"><div class="icon"><i class="fab fa-instagram"></i></div><h4>Social Media Management</h4><p>Content creation, scheduling, community management, and growth strategies across Instagram, Facebook, TikTok, and more.</p></div></div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".2s"><div class="service-card"><div class="icon"><i class="fas fa-ad"></i></div><h4>Paid Advertising</h4><p>Meta Ads, Google Ads, and targeted campaigns designed to maximize ROI and put your brand in front of the right audience.</p></div></div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".3s"><div class="service-card"><div class="icon"><i class="fas fa-envelope-open-text"></i></div><h4>Email Marketing</h4><p>Automated email campaigns, newsletters, and drip sequences that nurture leads and keep your customers engaged.</p></div></div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".4s"><div class="service-card"><div class="icon"><i class="fas fa-search"></i></div><h4>SEO & Content</h4><p>Search engine optimization, keyword strategy, and content marketing that drives organic traffic and builds long-term authority.</p></div></div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".5s"><div class="service-card"><div class="icon"><i class="fas fa-chart-line"></i></div><h4>Analytics & Reporting</h4><p>Clear, actionable reports that show exactly how your marketing is performing — and where to invest next for maximum growth.</p></div></div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".6s"><div class="service-card"><div class="icon"><i class="fas fa-funnel-dollar"></i></div><h4>Sales Funnel Strategy</h4><p>End-to-end funnel design and optimization — from awareness to conversion — that turns cold traffic into paying customers.</p></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- Why Choose Us -->
+<section class="sec-pad bg-dark-sec">
+    <div class="container">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay=".1s">
+                <span class="sec-badge">Why OnFoot</span>
+                <h2 class="sec-title light">Marketing That Actually Works</h2>
+                <p class="sec-desc light mb-4">We don't just post content — we build strategies rooted in data, creativity, and a deep understanding of your audience.</p>
+                <ul class="feature-list">
+                    <li><i class="far fa-check-circle"></i> <span style="color:#ccc;">Custom strategy for every client — no cookie-cutter plans</span></li>
+                    <li><i class="far fa-check-circle"></i> <span style="color:#ccc;">Transparent monthly reporting with real metrics</span></li>
+                    <li><i class="far fa-check-circle"></i> <span style="color:#ccc;">Experienced team with proven results across industries</span></li>
+                    <li><i class="far fa-check-circle"></i> <span style="color:#ccc;">Full-service: strategy, content, ads, and analytics in one place</span></li>
+                    <li><i class="far fa-check-circle"></i> <span style="color:#ccc;">Affordable packages for startups and growing businesses</span></li>
+                </ul>
+            </div>
+            <div class="col-lg-6">
+                <div class="row g-3">
+                    <div class="col-6 wow fadeInUp" data-wow-delay=".1s"><div class="stat-card" style="background:rgba(255,255,255,0.05);border-radius:12px;"><div class="num">3x</div><div class="label">Avg. ROI Increase</div></div></div>
+                    <div class="col-6 wow fadeInUp" data-wow-delay=".2s"><div class="stat-card" style="background:rgba(255,255,255,0.05);border-radius:12px;"><div class="num">200+</div><div class="label">Campaigns Launched</div></div></div>
+                    <div class="col-6 wow fadeInUp" data-wow-delay=".3s"><div class="stat-card" style="background:rgba(255,255,255,0.05);border-radius:12px;"><div class="num">50K+</div><div class="label">Leads Generated</div></div></div>
+                    <div class="col-6 wow fadeInUp" data-wow-delay=".4s"><div class="stat-card" style="background:rgba(255,255,255,0.05);border-radius:12px;"><div class="num">98%</div><div class="label">Client Satisfaction</div></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Social Media Marketing Section -->
+<section class="sec-pad bg-light-sec">
+    <div class="container">
+        <div class="row g-5 align-items-stretch">
+
+            <!-- LEFT: 3 Image Slots -->
+            <div class="col-lg-5 wow fadeInUp d-flex" data-wow-delay=".1s" style="align-self:stretch;">
+                <div style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:12px;width:100%;flex:1;">
+                    <!-- Top left -->
+                    <div style="background:#ebebeb;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:2px dashed #E8132A;overflow:hidden;min-height:200px;">
+                        <i class="fas fa-image" style="font-size:28px;color:#ccc;margin-bottom:6px;"></i>
+                        <span style="color:#bbb;font-size:11px;font-weight:600;">Image 1</span>
+                        <!-- <img src="your-image.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:12px;"> -->
+                    </div>
+                    <!-- Top right -->
+                    <div style="background:#ebebeb;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:2px dashed #E8132A;overflow:hidden;min-height:200px;">
+                        <i class="fas fa-image" style="font-size:28px;color:#ccc;margin-bottom:6px;"></i>
+                        <span style="color:#bbb;font-size:11px;font-weight:600;">Image 2</span>
+                        <!-- <img src="your-image.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:12px;"> -->
+                    </div>
+                    <!-- Bottom left -->
+                    <div style="background:#ebebeb;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:2px dashed #E8132A;overflow:hidden;min-height:200px;">
+                        <i class="fas fa-image" style="font-size:28px;color:#ccc;margin-bottom:6px;"></i>
+                        <span style="color:#bbb;font-size:11px;font-weight:600;">Image 3</span>
+                        <!-- <img src="your-image.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:12px;"> -->
+                    </div>
+                    <!-- Bottom right -->
+                    <div style="background:#ebebeb;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:2px dashed #E8132A;overflow:hidden;min-height:200px;">
+                        <i class="fas fa-image" style="font-size:28px;color:#ccc;margin-bottom:6px;"></i>
+                        <span style="color:#bbb;font-size:11px;font-weight:600;">Image 4</span>
+                        <!-- <img src="your-image.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:12px;"> -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT: Content -->
+            <div class="col-lg-7 wow fadeInUp" data-wow-delay=".2s">
+                <span class="sec-badge">Social Media Marketing</span>
+                <h2 class="sec-title">Grow Your Brand on Every Platform</h2>
+                <p class="sec-desc mb-4">We manage your social media presence from strategy to execution — creating content that connects, engages, and converts your audience into loyal customers across every major platform.</p>
+                <div class="row g-3 mb-4">
+                    <div class="col-6">
+                        <div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center;">
+                            <i class="fab fa-instagram" style="font-size:28px;color:#E1306C;margin-bottom:8px;display:block;"></i>
+                            <span style="font-size:13px;font-weight:600;color:var(--text);">Instagram</span>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center;">
+                            <i class="fab fa-facebook-f" style="font-size:28px;color:#1877F2;margin-bottom:8px;display:block;"></i>
+                            <span style="font-size:13px;font-weight:600;color:var(--text);">Facebook</span>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center;">
+                            <i class="fab fa-tiktok" style="font-size:28px;color:#010101;margin-bottom:8px;display:block;"></i>
+                            <span style="font-size:13px;font-weight:600;color:var(--text);">TikTok</span>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center;">
+                            <i class="fab fa-linkedin-in" style="font-size:28px;color:#0A66C2;margin-bottom:8px;display:block;"></i>
+                            <span style="font-size:13px;font-weight:600;color:var(--text);">LinkedIn</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-3 mb-4">
+                    <div class="col-12">
+                        <div class="service-card">
+                            <div class="d-flex align-items-start gap-3">
+                                <div class="icon" style="flex-shrink:0;"><i class="fas fa-pencil-alt"></i></div>
+                                <div><h4 style="margin-bottom:8px;">Content Creation</h4><p>Scroll-stopping posts, reels, stories, and carousels crafted for your brand voice — consistently posted on a strategic schedule.</p></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="service-card">
+                            <div class="d-flex align-items-start gap-3">
+                                <div class="icon" style="flex-shrink:0;"><i class="fas fa-users"></i></div>
+                                <div><h4 style="margin-bottom:8px;">Community Management</h4><p>We engage with your followers, respond to comments and DMs, and build a loyal online community around your brand every day.</p></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="service-card">
+                            <div class="d-flex align-items-start gap-3">
+                                <div class="icon" style="flex-shrink:0;"><i class="fas fa-ad"></i></div>
+                                <div><h4 style="margin-bottom:8px;">Paid Social Ads</h4><p>Targeted Meta and TikTok ad campaigns designed to reach the right audience and maximize your return on ad spend.</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="contact.html" class="theme-btn">Get Social Media Help <i class="far fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SEO Section -->
+<section class="sec-pad">
+    <div class="container">
+        <div class="text-center mb-5">
+            <span class="sec-badge">Search Engine Optimization</span>
+            <h2 class="sec-title">Rank Higher. Get Found. Grow Faster.</h2>
+            <p class="sec-desc mx-auto" style="max-width:580px;">We optimize your online presence so your business appears at the top of Google when customers are actively searching for what you offer.</p>
+        </div>
+        <div class="row g-5 align-items-start mb-5">
+            <!-- LEFT: 3 Image Slots -->
+            <div class="col-lg-4 wow fadeInUp d-flex" data-wow-delay=".1s" style="align-self:stretch;">
+                <div style="display:grid;grid-template-rows:1fr 1fr;gap:12px;width:100%;">
+                    <!-- Top: full width tall image -->
+                    <div style="background:#ebebeb;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:2px dashed #E8132A;overflow:hidden;min-height:220px;">
+                        <i class="fas fa-image" style="font-size:36px;color:#ccc;margin-bottom:8px;"></i>
+                        <span style="color:#bbb;font-size:11px;font-weight:600;">Image 1</span>
+                        <!-- <img src="your-image.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:12px;"> -->
+                    </div>
+                    <!-- Bottom: two side by side -->
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+                        <div style="background:#ebebeb;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:2px dashed #E8132A;overflow:hidden;min-height:180px;">
+                            <i class="fas fa-image" style="font-size:24px;color:#ccc;margin-bottom:6px;"></i>
+                            <span style="color:#bbb;font-size:11px;font-weight:600;">Image 2</span>
+                            <!-- <img src="your-image.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:12px;"> -->
+                        </div>
+                        <div style="background:#ebebeb;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:2px dashed #E8132A;overflow:hidden;min-height:180px;">
+                            <i class="fas fa-image" style="font-size:24px;color:#ccc;margin-bottom:6px;"></i>
+                            <span style="color:#bbb;font-size:11px;font-weight:600;">Image 3</span>
+                            <!-- <img src="your-image.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:12px;"> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- RIGHT: SEO Cards -->
+            <div class="col-lg-8">
+                <div class="row g-3">
+                    <div class="col-md-6 wow fadeInUp" data-wow-delay=".1s">
+                        <div class="service-card">
+                            <div class="icon"><i class="fas fa-search"></i></div>
+                            <h4>Keyword Research</h4>
+                            <p>We identify the exact search terms your customers use and build your SEO strategy around high-value, low-competition keywords that drive traffic.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 wow fadeInUp" data-wow-delay=".2s">
+                        <div class="service-card">
+                            <div class="icon"><i class="fas fa-file-alt"></i></div>
+                            <h4>On-Page SEO</h4>
+                            <p>Optimized meta tags, headings, content structure, image alt text, and internal linking — every page fine-tuned for maximum search visibility.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 wow fadeInUp" data-wow-delay=".3s">
+                        <div class="service-card">
+                            <div class="icon"><i class="fas fa-link"></i></div>
+                            <h4>Link Building</h4>
+                            <p>High-quality backlink acquisition from authoritative websites that boost your domain authority and push your rankings higher on Google.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 wow fadeInUp" data-wow-delay=".4s">
+                        <div class="service-card">
+                            <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <h4>Local SEO</h4>
+                            <p>Google Business Profile optimization and geo-targeted strategies that make sure your business shows up in local search results.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 wow fadeInUp" data-wow-delay=".5s">
+                        <div class="service-card">
+                            <div class="icon"><i class="fas fa-pen-fancy"></i></div>
+                            <h4>Content Marketing</h4>
+                            <p>Blog posts and landing pages written to rank — building your authority and driving consistent organic traffic month after month.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 wow fadeInUp" data-wow-delay=".6s">
+                        <div class="service-card">
+                            <div class="icon"><i class="fas fa-chart-bar"></i></div>
+                            <h4>SEO Reporting</h4>
+                            <p>Monthly reports showing your keyword rankings, traffic growth, and ROI — so you always know how your SEO investment is performing.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEO Stats Bar -->
+        <div class="row g-3" style="background:var(--dark);border-radius:16px;padding:40px 30px;margin:0;">
+            <div class="col-lg-3 col-6 wow fadeInUp" data-wow-delay=".1s">
+                <div class="stat-card"><div class="num">+150%</div><div class="label">Avg. Organic Traffic Increase</div></div>
+            </div>
+            <div class="col-lg-3 col-6 wow fadeInUp" data-wow-delay=".2s">
+                <div class="stat-card"><div class="num">Top 3</div><div class="label">Google Rankings Achieved</div></div>
+            </div>
+            <div class="col-lg-3 col-6 wow fadeInUp" data-wow-delay=".3s">
+                <div class="stat-card"><div class="num">90 Days</div><div class="label">To See Real Results</div></div>
+            </div>
+            <div class="col-lg-3 col-6 wow fadeInUp" data-wow-delay=".4s">
+                <div class="stat-card"><div class="num">100+</div><div class="label">Keywords Ranked</div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-banner">
+    <div class="container">
+        <h2>Let's Grow Your Brand Together</h2>
+        <p>Book a free strategy call and let's map out your marketing roadmap.</p>
+        <a href="contact.html" class="btn-white">Book a Free Call</a>
+        <a href="design.html" class="btn-outline-white">Explore Design Services</a>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer-section section-bg">
+    <div class="container">
+        <div class="footer-widgets-wrapper">
+            <div class="row">
+                <div class="col-xl-3 col-sm-6 col-md-6 col-lg-4">
+                    <div class="single-footer-widget">
+                        <div class="widget-head"><a href="index.html"><img src="assets/img/logo/logo.svg" alt="logo"></a></div>
+                        <div class="footer-content">
+                            <p>OnFoot is your all-in-one partner for marketing, design, web development, and premium printing — helping businesses grow and stand out.</p>
+                            <div class="social-icon style-2 d-flex align-items-center">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-sm-6 col-md-6 col-lg-4 ps-lg-5">
+                    <div class="single-footer-widget">
+                        <div class="widget-head"><h3>Useful Links</h3></div>
+                        <ul class="list-items">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="services.html">Services</a></li>
+                            <li><a href="portfolio.html">Portfolio</a></li>
+                            <li><a href="studio.html">Studio</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-sm-6 col-md-6 col-lg-4">
+                    <div class="single-footer-widget">
+                        <div class="widget-head"><h3>Contact OnFoot</h3></div>
+                        <ul class="contact-list-2">
+                            <li>
+                                <div class="icon"><i class="far fa-envelope" style="color:#fff;font-size:18px;"></i></div>
+                                <div class="content"><span>Mail Us</span><h3><a href="mailto:hi@onfootllc.com">hi@onfootllc.com</a></h3></div>
+                            </li>
+                            <li>
+                                <div class="icon"><i class="fas fa-map-marker-alt" style="color:#fff;font-size:18px;"></i></div>
+                                <div class="content"><span>Location</span><h3>Colorado Springs, CO</h3></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-sm-6 col-md-6 col-lg-4 ps-lg-5">
+                    <div class="single-footer-widget">
+                        <div class="widget-head"><h3>Our Services</h3></div>
+                        <ul class="list-items">
+                            <li><a href="marketing.html">Marketing</a></li>
+                            <li><a href="design.html">Design</a></li>
+                            <li><a href="studio.html">Studio</a></li>
+                            <li><a href="shop-leftsidebar.html">Printing</a></li>
+                            <li><a href="contact.html">Get a Quote</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="footer-bottom-wrapper justify-content-center">
+                <p>Copyright 2025 &copy; OnFoot. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="assets/js/jquery-3.7.1.min.js"></script>
+<script src="assets/js/viewport.jquery.js"></script>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/gsap/gsap.js"></script>
+<script src="assets/js/gsap/gsap-scroll-trigger.js"></script>
+<script src="assets/js/swiper-bundle.min.js"></script>
+<script src="assets/js/jquery.meanmenu.min.js"></script>
+<script src="assets/js/jquery.magnific-popup.min.js"></script>
+<script src="assets/js/wow.min.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
