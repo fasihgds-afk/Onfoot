@@ -83,6 +83,18 @@
     color: #444 !important;
 }
 
+/* ── Mobile offcanvas (burger panel) spacing ── */
+@media (max-width: 768px) {
+    .fix-area .offcanvas__wrapper {
+        padding-top: 20px;
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+    .fix-area .offcanvas__top.mb-5 {
+        margin-bottom: 1rem !important;
+    }
+}
+
 
 /* ── Hero Section ── */
 .onfoot-hero {
