@@ -19,6 +19,16 @@
         <link rel="stylesheet" href="style.css">
         <style>
             .studio-hero-overlay { position:absolute; inset:0; background:linear-gradient(to right, rgba(0,0,0,.75) 50%, rgba(0,0,0,.2)); }
+            /* Keep header visible on dark studio hero */
+            .header-section-3 #header-sticky:not(.scrolled) .main-menu nav ul li a { color: #fff !important; }
+            .header-section-3 #header-sticky:not(.scrolled) .main-menu nav ul li:hover > a { color: #E8132A !important; }
+            .header-section-3 #header-sticky:not(.scrolled) .main-menu nav ul li .submenu { background: #fff !important; border-top: 2px solid #E8132A; }
+            .header-section-3 #header-sticky:not(.scrolled) .main-menu nav ul li .submenu li a { color: #222 !important; }
+            .header-section-3 #header-sticky:not(.scrolled) .main-menu nav ul li .submenu li:hover > a,
+            .header-section-3 #header-sticky:not(.scrolled) .main-menu nav ul li .submenu li.active > a { color: #E8132A !important; }
+            .header-section-3 #header-sticky:not(.scrolled) .search-icon i,
+            .header-section-3 #header-sticky:not(.scrolled) .cart-icon i,
+            .header-section-3 #header-sticky:not(.scrolled) .sidebar__toggle i { color: #fff !important; }
             .package-card { border:1.5px solid #f0f0f0; border-radius:16px; padding:36px 28px; height:100%; transition:all .3s; position:relative; overflow:hidden; }
             .package-card:hover { border-color:#E8132A; transform:translateY(-4px); }
             .package-card.featured { border-color:#E8132A; background:#fff5f5; }
@@ -149,11 +159,7 @@
                             </div>
                         </div>
                         <div class="header-right d-flex justify-content-end align-items-center">
-                            <a href="#0" class="search-trigger search-icon"><i class="fal fa-search"></i></a>
-                            <div class="menu-cart">
-                                <button id="openButton" class="cart-icon"><i class="far fa-shopping-cart"></i></button>
-                            </div>
-                            <div class="header__hamburger d-xl-none my-auto">
+<div class="header__hamburger d-xl-none my-auto">
                                 <div class="sidebar__toggle"><i class="far fa-bars"></i></div>
                             </div>
                         </div>
@@ -164,18 +170,7 @@
     </header>
 
     <!-- Search Area -->
-    <div class="search-wrap">
-        <div class="search-inner">
-            <i class="fas fa-times search-close" id="search-close"></i>
-            <div class="search-cell">
-                <form method="get">
-                    <div class="search-field-holder">
-                        <input type="search" class="main-search-input" placeholder="Search...">
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+</div>
 
     <!-- Hero Banner -->
     <section style="position:relative; min-height:520px; display:flex; align-items:center; overflow:hidden;">
