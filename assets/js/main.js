@@ -911,3 +911,44 @@
 
 })(jQuery); // End jQuery
 
+
+// Global custom cursor fallback initializer (runs on all pages)
+(function () {
+    function initGlobalCursor() {
+        const inner = document.querySelector(".cursor-inner");
+        const outer = document.querySelector(".cursor-outer");
+        if (!inner || !outer) return;
+
+        const move = (event) => {
+            const x = event.clientX;
+            const y = event.clientY;
+            inner.style.transform = "translate(" + x + "px, " + y + "px)";
+            outer.style.transform = "translate(" + x + "px, " + y + "px)";
+        };
+
+        document.addEventListener("mousemove", move, { passive: true });
+
+        document.body.addEventListener("mouseover", function (event) {
+            const target = event.target.closest("a, .cursor-pointer");
+            if (!target) return;
+            inner.classList.add("cursor-hover");
+            outer.classList.add("cursor-hover");
+        });
+
+        document.body.addEventListener("mouseout", function (event) {
+            const target = event.target.closest("a, .cursor-pointer");
+            if (!target) return;
+            inner.classList.remove("cursor-hover");
+            outer.classList.remove("cursor-hover");
+        });
+
+        inner.style.visibility = "visible";
+        outer.style.visibility = "visible";
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initGlobalCursor);
+    } else {
+        initGlobalCursor();
+    }
+})();
