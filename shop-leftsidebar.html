@@ -30,9 +30,73 @@
         <link rel="stylesheet" href="assets/css/main.css">
         <!--<< Style.css >>-->
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="assets/css/hero.css">
+        <style>
+            :root {
+                --red: #E8132A;
+                --dark: #111111;
+                --muted: #666666;
+                --border: #e8e8e8;
+            }
+            .page-hero {
+                background: linear-gradient(135deg, #fff5f5 0%, #ffffff 45%, #ffeef0 100%);
+                padding: 130px 0 70px;
+                position: relative;
+                overflow: hidden;
+                margin-top: 0;
+                border-bottom: 1px solid var(--border);
+            }
+            .page-hero::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(135deg, rgba(232, 19, 42, 0.08) 0%, transparent 55%);
+                pointer-events: none;
+            }
+            .page-hero .container { position: relative; z-index: 1; }
+            .page-hero h1 {
+                font-size: 58px;
+                font-weight: 800;
+                color: var(--dark);
+                margin-bottom: 16px;
+                line-height: 1.15;
+                text-transform: capitalize;
+            }
+            .page-hero .container.hero-heading-center .breadcrumb { justify-content: center; }
+            .page-hero .container.hero-heading-center nav { display: flex; justify-content: center; }
+            .page-hero p { font-size: 16px; color: var(--muted); max-width: 560px; line-height: 1.7; margin-bottom: 24px; }
+            .page-hero .breadcrumb { background: none; padding: 0; margin-bottom: 20px; }
+            .page-hero .breadcrumb-item a { color: var(--red); text-decoration: none; }
+            .page-hero .breadcrumb-item.active { color: var(--muted); }
+            .page-hero .breadcrumb-item + .breadcrumb-item::before { color: #bbb; }
+            .red-line { width: 60px; height: 4px; background: var(--red); border-radius: 2px; margin-bottom: 20px; }
+
+            body.page-shop .header-section-3 #header-sticky:not(.scrolled) .main-menu nav ul li a {
+                color: #222 !important;
+            }
+            body.page-shop .header-section-3 #header-sticky:not(.scrolled) .main-menu nav ul li:hover > a {
+                color: var(--red) !important;
+            }
+            body.page-shop .header-section-3 #header-sticky:not(.scrolled) .search-icon i,
+            body.page-shop .header-section-3 #header-sticky:not(.scrolled) .cart-icon i,
+            body.page-shop .header-section-3 #header-sticky:not(.scrolled) .sidebar__toggle i {
+                color: #222 !important;
+            }
+            body.page-shop .header-section-3 #header-sticky:not(.scrolled) .main-menu nav ul li .submenu {
+                background: #fff !important;
+                border-top: 2px solid var(--red);
+            }
+            body.page-shop .header-section-3 #header-sticky:not(.scrolled) .main-menu nav ul li .submenu li a {
+                color: #444 !important;
+            }
+            body.page-shop .header-section-3 #header-sticky:not(.scrolled) .main-menu nav ul li .submenu li:hover > a,
+            body.page-shop .header-section-3 #header-sticky:not(.scrolled) .main-menu nav ul li .submenu li.active > a {
+                color: var(--red) !important;
+            }
+        </style>
     </head>
 
-    <body>
+    <body class="page-shop">
 
 
     <!--<< Mouse Cursor Start >>-->  
@@ -102,7 +166,7 @@
                         </li>
                         <li>
                             <i class="fas fa-map-marker-alt"></i>
-                            55 Main Street, 2nd block, Malborne ,Australia
+                            55 Main Street, 2nd block, Malborne, Australia
                         </li>
                     </ul>
                     <div class="header-top-right">
@@ -254,31 +318,21 @@
         </div>
         <button id="closeButton" class="x-mark-icon"><i class="fas fa-times"></i></button>
     </div>
-</div>
 
-     <!--<< Breadcrumb Section Start >>-->
-     <div class="breadcrumb-wrapper section-padding bg-cover" style="background-image: url('assets/img/2.png'); padding: 190px 0 70px;">
-        <div class="container">
-            <div class="page-heading">
-                <div class="breadcrumb-sub-title text-center">
-                    <h1 class="wow fadeInUp" data-wow-delay=".3s">Shop All Products</h1>
-                    <ul class="breadcrumb-items wow fadeInUp" data-wow-delay=".5s">
-                        <li>
-                            <a href="index.html">
-                            Home
-                            </a>
-                        </li>
-                        <li>
-                            <i class="fal fa-minus"></i>
-                        </li>
-                        <li>
-                            Shop All
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+     <!--<< Hero (matches inner pages) >>-->
+     <div class="page-hero">
+         <div class="container text-center hero-heading-center">
+             <nav aria-label="breadcrumb">
+                 <ol class="breadcrumb">
+                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                     <li class="breadcrumb-item active" aria-current="page">Shop All</li>
+                 </ol>
+             </nav>
+             <div class="red-line mx-auto"></div>
+             <h1>Shop All Products</h1>
+             <p class="mx-auto">Browse print and promo products, request a quote when you're ready.</p>
+         </div>
+     </div>
 
     <!-- Shop Section Start -->
     <section class="shop-section fix section-padding">

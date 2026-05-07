@@ -62,7 +62,7 @@
 
 </head>
 
-    <body>
+    <body class="page-home">
 
         <!-- Preloader Start -->
     
@@ -291,23 +291,25 @@
         </div>
         <button id="closeButton" class="x-mark-icon"><i class="fas fa-times"></i></button>
     </div>
-</div>
 
                  <!-- Hero Section Start -->
                 <section class="hero-section-3" style="position:relative;overflow:hidden;">
 
-                <!-- Slide wrapper — JS will animate between slides -->
+                <!-- Slide wrapper - JS animates between slides -->
                 <div class="onfoot-hero" id="onfootHero">
                     <div class="container" style="position:relative;z-index:5;">
                         <div class="row align-items-center">
                             <!-- LEFT: Text -->
                             <div class="col-lg-6">
                                 <div class="hero-big-title" id="heroTitle">
-                                    <span class="line-white" id="heroLine1">MARKETING</span>
-                                    <span class="line-red" id="heroLine2">THAT</span>
-                                    <span class="line-outline" id="heroLine3">WORKS</span>
+                                    <span class="hero-title-line1">
+                                        <span class="line-white" id="heroLine1">MARKETING</span><span class="line-red" id="heroLine2">THAT</span>
+                                    </span>
+                                    <span class="hero-title-line2">
+                                        <span class="line-outline" id="heroLine3">GROWS</span>
+                                    </span>
                                 </div>
-                                <p class="hero-sub" id="heroSub">Grow your brand with powerful marketing strategies that reach the right audience and drive real results — fast.</p>
+                                <p class="hero-sub" id="heroSub">Grow your brand with powerful marketing strategies that reach the right audience and drive real results, fast.</p>
                                 <div class="hero-btns">
                                     <a href="contact.html" class="hero-btn-primary" id="heroBtn1">Get Started <i class="far fa-arrow-right"></i></a>
                                     <a href="portfolio.html" class="hero-btn-outline" id="heroBtn2">See Our Work</a>
@@ -345,10 +347,18 @@
                     {
                         badge: "Trusted by 500+ businesses",
                         line1: "MARKETING", line2: "THAT", line3: "GROWS",
-                        sub: "Grow your brand with powerful marketing strategies that reach the right audience and drive real results — fast.",
+                        sub: "Grow your brand with powerful marketing strategies that reach the right audience and drive real results, fast.",
                         btn1: { text: "Get Started", href: "contact.html" },
                         btn2: { text: "Our Services", href: "services.html" },
                         img1: "assets/img/hero/hero-1.png"
+                    },
+                    {
+                        badge: "Premium print, fast delivery",
+                        line1: "PRINTING", line2: "THAT", line3: "IMPRESSES",
+                        sub: "Premium quality printing for business cards, brochures, flyers, and more, printed fast and delivered to your door.",
+                        btn1: { text: "Shop Now", href: "shop-leftsidebar.html" },
+                        btn2: { text: "Get a Quote", href: "contact.html" },
+                        img1: "assets/img/hero/hero-4.png"
                     },
                     {
                         badge: "Bold designs that convert",
@@ -361,18 +371,10 @@
                     {
                         badge: "Websites built to perform",
                         line1: "WEB", line2: "THAT", line3: "CONVERTS",
-                        sub: "From stunning landing pages to full e-commerce platforms — we build websites that turn visitors into loyal customers.",
+                        sub: "From stunning landing pages to full e-commerce platforms, we build websites that turn visitors into loyal customers.",
                         btn1: { text: "Build My Site", href: "contact.html" },
                         btn2: { text: "See Our Work", href: "portfolio.html" },
                         img1: "assets/img/hero/hero-3.png"
-                    },
-                    {
-                        badge: "Premium print, fast delivery",
-                        line1: "PRINTING", line2: "THAT", line3: "IMPRESSES",
-                        sub: "Premium quality printing for business cards, brochures, flyers, and more — printed fast and delivered to your door.",
-                        btn1: { text: "Shop Now", href: "shop-leftsidebar.html" },
-                        btn2: { text: "Get a Quote", href: "contact.html" },
-                        img1: "assets/img/hero/hero-4.png"
                     }
                 ];
 
@@ -389,26 +391,27 @@
                     // Fade out
                     const title = document.getElementById('heroTitle');
                     const sub = document.getElementById('heroSub');
-                    title.style.opacity = '0'; title.style.transform = 'translateY(20px)';
+                    title.style.opacity = '0'; title.style.transform = 'translateY(12px)';
                     sub.style.opacity = '0';
                     setTimeout(() => {
-                        // Update content
+                        // Update content (all three headline words same tick so outline word stays in sync)
                         const badge = document.getElementById('heroBadge'); if (badge) badge.textContent = s.badge;
                         document.getElementById('heroLine1').textContent = s.line1;
                         document.getElementById('heroLine2').textContent = s.line2;
                         document.getElementById('heroLine3').textContent = s.line3;
                         document.getElementById('heroSub').textContent = s.sub;
-                        document.getElementById('heroBtn1').textContent = s.btn1.text;
+                        document.getElementById('heroBtn1').innerHTML = s.btn1.text + ' <i class="far fa-arrow-right"></i>';
                         document.getElementById('heroBtn1').href = s.btn1.href;
                         document.getElementById('heroBtn2').textContent = s.btn2.text;
                         document.getElementById('heroBtn2').href = s.btn2.href;
                         document.getElementById('heroCardImg1').src = s.img1;
-                        // Fade in
-                        title.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                        title.style.opacity = '1'; title.style.transform = 'translateY(0)';
-                        sub.style.transition = 'opacity 0.5s ease 0.1s';
-                        sub.style.opacity = '1';
-                    }, 300);
+                        requestAnimationFrame(() => {
+                            title.style.transition = 'opacity 0.45s ease, transform 0.45s ease';
+                            title.style.opacity = '1'; title.style.transform = 'translateY(0)';
+                            sub.style.transition = 'opacity 0.45s ease';
+                            sub.style.opacity = '1';
+                        });
+                    }, 120);
                     // Reset timer
                     clearInterval(timer);
                     timer = setInterval(() => goToSlide((current + 1) % slides.length), 5000);
@@ -557,7 +560,7 @@
                                                 Marketing, Design &amp; Print Solutions That Elevate Your Brand
                                             </h2>
                                         </div>
-                                        <p class="mt-3 mt-md-0 wow fadeInUp" data-wow-delay=".5s">OnFoot is your all-in-one creative partner — from powerful marketing strategies and bold graphic design to professional web development and premium printing. We help businesses of every size stand out, grow faster, and make a lasting impression.</p>
+                                        <p class="mt-3 mt-md-0 wow fadeInUp" data-wow-delay=".5s">OnFoot is your all-in-one creative partner, from powerful marketing strategies and bold graphic design to professional web development and premium printing. We help businesses of every size stand out, grow faster, and make a lasting impression.</p>
                                         <div class="video-items">
                                             <ul class="list wow fadeInUp" data-wow-delay=".5s">
                                                 <li>
@@ -628,7 +631,7 @@
                                     <div class="service-content">
                                         <h3><a href="design.html">Design</a></h3>
                                         <p>
-                                           From logos to full brand identities — we craft bold, creative designs that make your business unforgettable.
+                                           From logos to full brand identities, we craft bold, creative designs that make your business unforgettable.
                                         </p>
                                         <a href="design.html" class="link-btn">Shop Now <i class="far fa-long-arrow-right"></i></a>
                                     </div>
@@ -656,7 +659,7 @@
                                     <div class="service-content">
                                         <h3><a href="shop-leftsidebar.html">Printing</a></h3>
                                         <p>
-                                             Premium quality printing for business cards, brochures, flyers, banners and more — fast and reliable.
+                                             Premium quality printing for business cards, brochures, flyers, banners and more, fast and reliable.
                                         </p>
                                         <a href="shop-leftsidebar.html" class="link-btn">Shop Now <i class="far fa-long-arrow-right"></i></a>
                                     </div>
@@ -676,7 +679,7 @@
                             <h2 class="split-text right">
                                 Portfolio Highlights
                             </h2>
-                            <p class="wow fadeInUp" data-wow-delay=".3s">A glimpse of the work we're proud of — from bold brand identities to stunning print materials and powerful digital experiences.</p>
+                            <p class="wow fadeInUp" data-wow-delay=".3s">A glimpse of the work we're proud of, from bold brand identities to stunning print materials and powerful digital experiences.</p>
                         </div>
 
                         <style>
@@ -910,7 +913,7 @@
                                                 </h5>
                                                 <div id="faq1" class="accordion-collapse show" data-bs-parent="#accordion">
                                                     <div class="accordion-body">
-                                                        Yes. We support both small and bulk orders with flexible minimums depending on the product. Whether you need 25 or 25,000 — we've got you covered.
+                                                        Yes. We support both small and bulk orders with flexible minimums depending on the product. Whether you need 25 or 25,000, we've got you covered.
                                                     </div>
                                                 </div>
                                             </div>
@@ -922,7 +925,7 @@
                                                 </h5>
                                                 <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#accordion">
                                                     <div class="accordion-body">
-                                                        Most orders are completed within 2–5 business days. Rush same-day or next-day options are also available for urgent projects — just contact us.
+                                                        Most orders are completed within 2–5 business days. Rush same-day or next-day options are also available for urgent projects, just contact us.
                                                     </div>
                                                 </div>
                                             </div>
@@ -952,7 +955,7 @@
                                                 </h5>
                                                 <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#accordion2">
                                                     <div class="accordion-body">
-                                                        Yes! We build modern, responsive websites and e-commerce platforms tailored to your brand. From landing pages to full online stores — we handle it all.
+                                                        Yes! We build modern, responsive websites and e-commerce platforms tailored to your brand. From landing pages to full online stores, we handle it all.
                                                     </div>
                                                 </div>
                                             </div>

@@ -18,7 +18,7 @@
     z-index: 999;
     background: transparent !important;
     box-shadow: none;
-    padding: 18px 0;
+    padding: 24px 0;
     transition: background 0.4s ease, box-shadow 0.4s ease, padding 0.3s ease;
 }
 
@@ -61,7 +61,7 @@
     top: 0 !important;
     background: #ffffff !important;
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08) !important;
-    padding: 10px 0;
+    padding: 14px 0;
 }
 .header-section-3 #header-sticky.scrolled .main-menu nav ul li a {
     color: #222222 !important;
@@ -80,6 +80,31 @@
 }
 .header-section-3 #header-sticky.scrolled .submenu li a {
     color: #444 !important;
+}
+
+/* ── Homepage: light hero gradient; keep nav + icons dark at top and when scrolled ── */
+body.page-home .header-section-3 #header-sticky .main-menu nav ul li a {
+    color: #222222 !important;
+}
+body.page-home .header-section-3 #header-sticky .main-menu nav ul li a:hover,
+body.page-home .header-section-3 #header-sticky .main-menu nav ul li.active > a {
+    color: #E8132A !important;
+}
+body.page-home .header-section-3 #header-sticky .search-icon i,
+body.page-home .header-section-3 #header-sticky .cart-icon i,
+body.page-home .header-section-3 #header-sticky .sidebar__toggle i {
+    color: #222222 !important;
+}
+body.page-home .header-section-3 #header-sticky .main-menu nav ul li .submenu {
+    background: #ffffff !important;
+    border-top: 2px solid #E8132A;
+}
+body.page-home .header-section-3 #header-sticky .main-menu nav ul li .submenu li a {
+    color: #444444 !important;
+}
+body.page-home .header-section-3 #header-sticky .main-menu nav ul li .submenu li a:hover,
+body.page-home .header-section-3 #header-sticky .main-menu nav ul li .submenu li.active > a {
+    color: #E8132A !important;
 }
 
 /* ── Mobile offcanvas (burger panel) spacing ── */
@@ -118,15 +143,45 @@
 .hero-big-title {
     font-size: clamp(30px, 3.8vw, 56px);
     font-weight: 900;
-    line-height: 0.9;
+    line-height: 1;
     text-transform: uppercase;
     letter-spacing: -2px;
     margin-bottom: 24px;
     color: #1a1a1a;
-    white-space: nowrap;
+    white-space: normal;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
-.hero-big-title .line-red { color: #E8132A; display: inline-block; margin-right: 8px; }
-.hero-big-title .line-outline { -webkit-text-stroke: 2px #1a1a1a; color: transparent; display: inline-block; }
+.hero-title-line1 {
+    display: block;
+    white-space: nowrap;
+    line-height: 0.92;
+}
+.hero-title-line2 {
+    display: block;
+    white-space: nowrap;
+    margin-top: 0.06em;
+    line-height: 0.92;
+}
+.hero-big-title .line-white,
+.hero-big-title .line-red,
+.hero-big-title .line-outline {
+    transition: none !important;
+}
+.hero-big-title .line-white {
+    display: inline-block;
+    margin-right: 0.28em;
+}
+.hero-big-title .line-red {
+    color: #E8132A;
+    display: inline-block;
+}
+.hero-big-title .line-outline {
+    -webkit-text-stroke: 2px #1a1a1a;
+    color: transparent;
+    display: inline-block;
+}
 
 /* Subtext */
 .hero-sub {
@@ -266,6 +321,8 @@
         width: auto !important;
         max-width: min(280px, 62vw) !important;
         object-fit: contain !important;
+        transform: scale(1.08);
+        transform-origin: left center;
     }
     .header-section-3 #header-sticky .header-main {
         justify-content: space-between !important;
@@ -280,5 +337,21 @@
         flex: 1 1 auto;
         min-width: 0;
         padding-left: 0 !important;
+    }
+}
+
+/* Fixed #header-sticky overlays content; without extra top pad the breadcrumb sits
+   under the logo vs Portfolio (no hero.css = full header in normal flow inside absolute shell). */
+.header-section-3 ~ .page-hero {
+    padding-top: 172px !important;
+}
+@media (max-width: 992px) {
+    .header-section-3 ~ .page-hero {
+        padding-top: 158px !important;
+    }
+}
+@media (max-width: 768px) {
+    .header-section-3 ~ .page-hero {
+        padding-top: 132px !important;
     }
 }
